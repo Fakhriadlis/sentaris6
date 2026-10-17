@@ -37,10 +37,10 @@
       padding-bottom: env(safe-area-inset-bottom, 0px);
     }
     *, *::before, *::after { box-sizing: inherit; }
-    html { -webkit-text-size-adjust: 100%; }
+    html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; overflow-x: clip; }
     html.lenis, html.lenis body { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto !important; }
-    body { margin: 0; background: var(--night); color: #fff; font-family: var(--text); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body { margin: 0; background: var(--night); color: #fff; font-family: var(--text); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; overflow-x: clip; }
     body.locked { overflow: hidden; }
     img, video, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
@@ -98,7 +98,7 @@
     .menu-open .burger span { background: transparent; }
     .menu-open .burger span::before { top: 0; transform: rotate(45deg); }
     .menu-open .burger span::after { top: 0; transform: rotate(-45deg); }
-    .menu { position: fixed; inset: 0; z-index: 80; background: var(--night-2); color: #fff; display: grid; grid-template-rows: 1fr auto; padding: 120px var(--pad) 40px; clip-path: inset(0 0 100% 0); transition: clip-path .7s cubic-bezier(.7,0,.2,1); }
+    .menu { position: fixed; inset: 0; z-index: 80; background: var(--night-2); color: #fff; display: grid; grid-template-rows: 1fr auto auto; padding: 120px var(--pad) 40px; clip-path: inset(0 0 100% 0); transition: clip-path .7s cubic-bezier(.7,0,.2,1); }
     .menu-open .menu { clip-path: inset(0 0 0 0); }
     .menu ol { list-style: none; margin: 0; padding: 0; align-self: center; counter-reset: m; }
     .menu li { overflow: hidden; }
@@ -278,6 +278,9 @@
     #demo video { width: min(1100px, 94vw); aspect-ratio: 16 / 9; height: auto; }
     .x { position: fixed; top: calc(16px + env(safe-area-inset-top, 0px)); right: 16px; width: 48px; height: 48px; border-radius: 50%; background: #fff; color: var(--ink); font-size: 22px; line-height: 1; }
 
+    /* ---------- Mobile-only pieces (hidden on desktop) ---------- */
+    .mbar, .menu-cta, .swipe-hint, .im-hint { display: none; }
+
     /* ---------- Reveal ---------- */
     .js [data-reveal] { opacity: 0; transform: translateY(36px); }
 
@@ -288,7 +291,12 @@
       .hero-film { width: 100%; max-width: 520px; aspect-ratio: 16 / 10; }
       .card { grid-template-columns: minmax(0, 1fr); min-height: 0; top: calc(84px + var(--i) * 16px); }
       .card ul { align-self: start; }
-      .testi { grid-template-columns: minmax(0, 1fr); max-width: 520px; }
+      /* testimonials become a swipe row instead of three tall cards */
+      .testi { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 10px; scroll-padding: 0 var(--pad); }
+      .testi::-webkit-scrollbar { display: none; }
+      .testi > .tcard { flex: 0 0 min(84%, 420px); scroll-snap-align: start; }
+      .swipe-hint { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 13px; color: var(--ink-2); }
+      .night .swipe-hint { color: var(--mist); }
       .about, .faq { grid-template-columns: minmax(0, 1fr); }
       .team { justify-self: stretch; }
       .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -296,11 +304,30 @@
       .foot { grid-template-columns: minmax(0, 1fr); }
       .foot .r, .foot .c { text-align: left; }
       /* horizontal products: native swipe on touch screens */
-      .hz-track { width: auto; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px; }
+      .hz-track { width: auto; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px; scroll-padding: 0 var(--pad); }
       .hz-track::-webkit-scrollbar { display: none; }
-      .pcard { width: 82vw; scroll-snap-align: start; }
-      .hz-foot { display: none; }
-      .im-box { clip-path: inset(30% 8% 30% 8% round 22px); }
+      .pcard { width: min(82vw, 520px); scroll-snap-align: start; cursor: pointer; }
+      .pcard .pm video, .pcard .pm img, .pcard:hover .pm video, .pcard:hover .pm img { transform: none; }   /* no hover on touch: keep media sharp */
+      .hz-foot { display: flex; margin-top: 22px; }                                                      /* swipe progress */
+      /* Film on phones: a plain block — full 16:9 video, text right below, no scroll animation */
+      .immersive { height: auto; padding: 24px 0 88px; }
+      .im-stage { position: relative; top: auto; height: auto; overflow: visible; }
+      .im-box { position: relative; inset: auto; width: calc(100% - var(--pad) * 2); margin: 0 auto; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; clip-path: none; will-change: auto; }
+      .im-box video { object-fit: contain; background: #000; }
+      .im-box::after { display: none; }
+      .im-cap { position: relative; left: auto; right: auto; bottom: auto; flex-direction: column; align-items: flex-start; gap: 18px; padding: 28px var(--pad) 0; opacity: 1; }
+      .im-cap h2 { max-width: 15ch; font-size: clamp(30px, 8.4vw, 46px); }
+      .im-hint { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--mist); }
+      .card { top: calc(76px + var(--i) * 12px); }
+      .blob-wrap { width: 120vw; margin: -60vw 0 0 -60vw; }
+
+      /* thumb-reachable CTA bar */
+      .mbar { display: flex; position: fixed; z-index: 70; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); gap: 8px; padding: 6px; border-radius: 999px; background: rgba(7,11,31,.92); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 18px 40px -12px rgba(0,0,0,.6); transform: translateY(160%); visibility: hidden; transition: transform .55s cubic-bezier(.2,.8,.2,1), visibility 0s linear .55s; }
+      .mbar.show { transform: none; visibility: visible; transition: transform .55s cubic-bezier(.2,.8,.2,1), visibility 0s; }
+      .mbar .btn { min-height: 48px; padding: 12px 18px; font-size: 15px; }
+      .mbar .btn.light { flex: 1; }
+      .mbar .btn.line { box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
+      .menu-cta { display: inline-flex; align-self: start; margin-bottom: 28px; }
     }
     @media (max-width: 600px) {
       .hdr .talk { display: none; }
@@ -313,7 +340,47 @@
       .card { padding: 28px 24px; }
       .card li { font-size: 16px; }
       .faq .ans { padding-right: 0; }
-      .im-cap { flex-direction: column; align-items: flex-start; gap: 18px; }
+
+      /* type sized for one hand */
+      .hero h1 { font-size: clamp(38px, 11vw, 52px); line-height: 1; }
+      .hero-grid { margin-top: 32px; }
+      .hero-side p b { font-size: 20px; }
+      .hero-film { display: none; }               /* the full film opens right below — no double video on phones */
+      .rot { padding: 88px 0; }
+      .rot p { font-size: clamp(36px, 11vw, 56px); }
+      .sheet { border-radius: 28px 28px 0 0; padding: 72px 0 80px; }
+      .sec-head { margin-bottom: 36px; gap: 18px; }
+      .h2 { font-size: clamp(32px, 9.4vw, 46px); }
+      .lede { font-size: 16px; }
+      .card { gap: 16px; padding: 26px 22px 24px; border-radius: 24px; }
+      .card h3 { font-size: 28px; }
+      .card p { margin-top: 10px; font-size: 15px; }
+      .card ul { gap: 10px; }
+      .card li { font-size: 15px; padding-bottom: 10px; }
+      .statement { padding: 110px 0; }
+      .statement .big { font-size: clamp(30px, 8.8vw, 46px); }
+      .products { padding: 80px 0 64px; }
+      .pcard h3 { font-size: 24px; }
+      .pcard p { font-size: 15px; }
+      .tcard h3 { font-size: 20px; }
+      .tcard p { font-size: 15px; }
+      .about blockquote { font-size: 24px; }
+      .stats { gap: 28px 18px; margin-top: 64px; }
+      .stat b { font-size: clamp(40px, 12vw, 56px); }
+      .stat b.word { font-size: 28px; }
+      .stat > span { font-size: 14px; }
+      .faq summary { font-size: 18px; padding: 22px 0; }
+      .closing { padding: 110px 0 calc(110px + env(safe-area-inset-bottom, 0px)); }
+      .closing .big { font-size: clamp(48px, 15vw, 76px); }
+      .closing-row { margin-top: 32px; gap: 28px; }
+      .closing-row p { font-size: 16px; }
+      .magnet { width: 100%; aspect-ratio: auto; min-height: 60px; border-radius: 999px; font-size: 17px; }
+      .magnet br { display: none; }
+      .foot { margin-top: 64px; gap: 10px; }
+      .menu { padding-top: 104px; }
+      .menu li a { font-size: clamp(36px, 11vw, 52px); }
+      .pre-word { font-size: clamp(48px, 17vw, 96px); }
+      .odo { font-size: clamp(56px, 16vw, 96px); }
     }
     @media (prefers-reduced-motion: reduce) {
       .pre { display: none; }
@@ -322,6 +389,7 @@
       .im-stage { position: relative; height: auto; aspect-ratio: 16 / 9; }
       .im-box { clip-path: none; }
       .im-cap { opacity: 1; }
+      @media (max-width: 1000px) { .im-stage { aspect-ratio: auto; padding: 56px 0; } }
       .slot span, .blob, .badge svg.ring, .hero-glow { animation: none; }
     }
   </style>
@@ -365,6 +433,7 @@
       <li><a href="#tentang">Tentang</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ol>
+    <a class="btn light wa menu-cta" href="#">Coba Gratis 5 Hari <span class="ar" aria-hidden="true">→</span></a>
     <div class="menu-foot">
       <a class="wa" href="#">WhatsApp </a>
       <a href="https://playbook.sentaris.cloud" target="_blank" rel="noopener">playbook.sentaris.cloud</a>
@@ -411,6 +480,7 @@
         <div class="im-cap" id="imCap">
           <h2>Satu layar untuk chat, iklan, dan lead.</h2>
           <button class="btn light" type="button" data-open-demo>Tonton dengan suara <span class="ar" aria-hidden="true">→</span></button>
+          <span class="im-hint">Diputar layar penuh · putar HP ke samping untuk tampilan terbesar</span>
         </div>
       </div>
     </section>
@@ -519,6 +589,7 @@
           </article>
         </div>
         <div class="wrap hz-foot" aria-hidden="true"><div class="hz-bar"><i id="hzBar"></i></div><span class="hz-count" id="hzCount">01 / 08</span></div>
+        <p class="wrap swipe-hint">Geser untuk melihat produk lainnya →</p>
       </div>
     </section>
 
@@ -555,6 +626,7 @@
             <div class="role"><b>Owner Klinik</b><span>5 Nomor CS</span></div>
           </article>
         </div>
+        <p class="swipe-hint">Geser untuk melihat testimoni lainnya →</p>
 
         <!-- About -->
         <div class="about" id="tentang" style="margin-top:clamp(110px,14vw,190px)">
@@ -603,7 +675,7 @@
       <h2 class="big" data-reveal>Mari mulai<br /><span class="grad">hari ini.</span></h2>
       <div class="closing-row">
         <p data-reveal>Kami pasang room untuk tim Anda, Anda scan QR nomor sales, chat pertama masuk hari itu juga. Lalu langganan bulanan per room — berhenti kapan saja, data tetap milik Anda.</p>
-        <a class="magnet wa" href="#" id="magnet" data-cursor="Chat"><span>Coba Gratis<br />5 Hari →</span></a>
+        <a class="magnet wa" href="#" id="magnet" data-cursor="Chat"><span>Coba Gratis<br /> 5 Hari →</span></a>
       </div>
       <div class="foot">
         <span>© 2026 SENTARIS. All rights reserved.</span>
@@ -612,6 +684,12 @@
       </div>
     </div>
   </footer>
+
+  <!-- Mobile CTA bar (thumb zone) -->
+  <div class="mbar" id="mbar">
+    <a class="btn line" href="https://playbook.sentaris.cloud" target="_blank" rel="noopener">Demo</a>
+    <a class="btn light wa" href="#">Coba Gratis 5 Hari <span class="ar" aria-hidden="true">→</span></a>
+  </div>
 
   <div class="cur" id="cur" aria-hidden="true"></div>
   <div class="cur-ring" id="curRing" aria-hidden="true"></div>
@@ -629,7 +707,9 @@
     var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
     var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     var fine = matchMedia("(pointer: fine)").matches;
-    var desktop = matchMedia("(min-width: 1001px)").matches;
+    var mqDesk = matchMedia("(min-width: 1001px)");
+    var isDesk = function () { return mqDesk.matches; };     /* checked live, so resizing / rotating never leaves desktop code on a phone layout */
+    var desktop = isDesk();
 
     /* ---------- WhatsApp links (edit here) ---------- */
     var WA = "https://wa.me/6281231333316?text=" + encodeURIComponent("Halo SENTARIS, saya mau Coba Gratis 5 Hari");
@@ -663,7 +743,23 @@
 
     /* ---------- Dialogs ---------- */
     var demo = $("#demo"), dv = $("video", demo), lb = $("#lightbox"), lbi = $("img", lb);
-    var openDemo = function () { if (!dv.getAttribute("src")) dv.src = "SENTARIS%20LAUNCH.mp4"; demo.showModal(); var p = dv.play(); if (p && p.catch) p.catch(function () {}); };
+    var openDemo = function () {
+      if (!dv.getAttribute("src")) dv.src = "SENTARIS%20LAUNCH.mp4";
+      demo.showModal();
+      var p = dv.play(); if (p && p.catch) p.catch(function () {});
+      if (!isDesk()) {                                  /* phones: native full screen, rotate to landscape if allowed */
+        try {
+          if (dv.requestFullscreen) {
+            dv.requestFullscreen().then(function () {
+              if (screen.orientation && screen.orientation.lock) screen.orientation.lock("landscape").catch(function () {});
+            }).catch(function () {});
+          } else if (dv.webkitEnterFullscreen) dv.webkitEnterFullscreen();   /* iPhone */
+        } catch (err) {}
+      }
+    };
+    /* leaving full screen on a phone closes the player */
+    document.addEventListener("fullscreenchange", function () { if (!document.fullscreenElement && !isDesk() && demo.open) demo.close(); });
+    dv.addEventListener("webkitendfullscreen", function () { if (demo.open) demo.close(); });
     $$("[data-open-demo]").forEach(function (b) { b.addEventListener("click", openDemo); });
     $(".hero-film").addEventListener("click", openDemo);
     $$("[data-lightbox]").forEach(function (b) { b.addEventListener("click", function () { lbi.src = b.dataset.lightbox; lb.showModal(); }); });
@@ -671,6 +767,32 @@
       d.addEventListener("click", function (e) { if (e.target === d || e.target.hasAttribute("data-close")) d.close(); });
       d.addEventListener("close", function () { var v = $("video", d); if (v) v.pause(); });
     });
+
+    /* ---------- Phones: CTA bar appears after the hero, hides at the closing CTA and while the menu is open ---------- */
+    var mbar = $("#mbar");
+    if (mbar) {
+      var pastHero = false, atEnd = false;
+      var syncBar = function () { mbar.classList.toggle("show", !isDesk() && pastHero && !atEnd && !document.body.classList.contains("menu-open")); };
+      mqDesk.addEventListener ? mqDesk.addEventListener("change", syncBar) : mqDesk.addListener(syncBar);
+      new IntersectionObserver(function (es) { pastHero = !es[0].isIntersecting; syncBar(); }, { threshold: 0, rootMargin: "-40% 0px 0px 0px" }).observe($(".hero"));
+      new IntersectionObserver(function (es) { atEnd = es[0].isIntersecting; syncBar(); }, { threshold: 0.15 }).observe($("#coba"));
+      burger.addEventListener("click", function () { setTimeout(syncBar, 0); });
+      $$("#menu a").forEach(function (a) { a.addEventListener("click", function () { setTimeout(syncBar, 0); }); });
+    }
+
+    /* ---------- Phones: product swipe shows its own progress ---------- */
+    {
+      var htr = $("#hzTrack"), hbar = $("#hzBar"), hcnt = $("#hzCount"), hcards = $$(".pcard", htr), hraf = 0;
+      var hupd = function () {
+        hraf = 0; if (isDesk()) return;
+        var max = htr.scrollWidth - htr.clientWidth, p = max > 0 ? htr.scrollLeft / max : 0;
+        hbar.style.transform = "scaleX(" + p.toFixed(3) + ")";
+        var n = Math.round(p * (hcards.length - 1)) + 1;
+        hcnt.textContent = (n < 10 ? "0" : "") + n + " / 0" + hcards.length;
+      };
+      htr.addEventListener("scroll", function () { if (!hraf) hraf = requestAnimationFrame(hupd); }, { passive: true });
+      hupd();
+    }
 
     /* ---------- Team photo: never wider than its real pixels ---------- */
     var timg = $(".team img");
@@ -742,7 +864,10 @@
       gsap.to(".hero .mask > span", { y: 0, duration: 1.2, ease: "expo.out", stagger: 0.1 });
       gsap.fromTo("[data-hero]", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.12, delay: 0.25 });
     };
-    gsap.timeline()
+    var seen = false;
+    try { seen = sessionStorage.getItem("sentaris-pre") === "1"; sessionStorage.setItem("sentaris-pre", "1"); } catch (err) {}
+    if (!desktop && seen) { pre.remove(); heroIn(); }
+    else gsap.timeline().timeScale(desktop ? 1 : 1.6)
       .to(counter, { v: 100, duration: 1.6, ease: "power2.inOut", onUpdate: function () {
         var n = Math.round(counter.v); setOdo(n); if (n >= 100) cols[0].style.opacity = 1;
         $("#preBar").style.transform = "scaleX(" + (counter.v / 100).toFixed(3) + ")";
@@ -752,17 +877,20 @@
       .to(pre, { yPercent: -100, duration: 0.9, ease: "expo.inOut", onComplete: function () { pre.remove(); } }, 2.15)
       .add(heroIn, 2.45);
 
-    /* ---------- Immersive scale: the film opens to full screen ---------- */
-    var imFrom = desktop ? "inset(22% 30% 22% 30% round 28px)" : "inset(30% 8% 30% 8% round 22px)";
-    gsap.timeline({ scrollTrigger: { trigger: "#film", start: "top top", end: "bottom bottom", scrub: 0.6 } })
-      .fromTo("#imBox", { clipPath: imFrom }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "power2.inOut", duration: 1 })
-      .to("#imCap", { opacity: 1, duration: 0.3 }, 0.75);
+    var mm = gsap.matchMedia();
+
+    /* ---------- Immersive scale: the film opens to full screen (desktop only; phones show it as a plain block) ---------- */
+    mm.add("(min-width: 1001px)", function () {
+      gsap.timeline({ scrollTrigger: { trigger: "#film", start: "top top", end: "bottom bottom", scrub: 0.6 } })
+        .fromTo("#imBox", { clipPath: "inset(22% 30% 22% 30% round 28px)" }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "power2.inOut", duration: 1 })
+        .to("#imCap", { opacity: 1, duration: 0.3 }, 0.75);
+    });
 
     /* ---------- Hero content drifts back as the film takes over ---------- */
     gsap.to(".hero .wrap", { yPercent: -18, opacity: 0.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
 
     /* ---------- Products: pinned, liquid horizontal scroll (desktop) ---------- */
-    if (desktop) {
+    mm.add("(min-width: 1001px)", function () {
       var track = $("#hzTrack"), cards = $$(".pcard", track), bar = $("#hzBar"), count = $("#hzCount");
       var dist = function () { return track.scrollWidth - window.innerWidth; };
       var skew = gsap.quickTo(track, "skewX", { duration: 0.6, ease: "power3" });
@@ -770,7 +898,7 @@
         x: function () { return -dist(); }, ease: "none",
         scrollTrigger: {
           trigger: "#produk", start: "top top", end: function () { return "+=" + dist(); },
-          pin: "#produk", scrub: 0.8, invalidateOnRefresh: true, anticipatePin: 1,
+          pin: "#produk", scrub: 0.8, invalidateOnRefresh: true, anticipatePin: 1, refreshPriority: 1,
           onUpdate: function (self) {
             skew(gsap.utils.clamp(-7, 7, self.getVelocity() / -350));       /* the "liquid" lean while moving */
             bar.style.transform = "scaleX(" + self.progress.toFixed(4) + ")";
@@ -779,19 +907,23 @@
           }
         }
       });
-      ScrollTrigger.addEventListener("scrollEnd", function () { skew(0); });
+      var settle = function () { skew(0); };
+      ScrollTrigger.addEventListener("scrollEnd", settle);
       cards.forEach(function (c) {
         gsap.fromTo($(".pm > *", c), { xPercent: -6 }, { xPercent: 6, ease: "none",
           scrollTrigger: { trigger: c, containerAnimation: tween, start: "left right", end: "right left", scrub: true } });
       });
-    }
+      return function () { ScrollTrigger.removeEventListener("scrollEnd", settle); gsap.set(track, { clearProps: "transform" }); };
+    });
 
     /* ---------- Services: each card shrinks as the next one stacks on top ---------- */
     var svc = $$(".card");
-    svc.forEach(function (c, i) {
-      var next = svc[i + 1]; if (!next) return;
-      gsap.to(c, { scale: 0.92, opacity: 0.55, ease: "none",
-        scrollTrigger: { trigger: next, start: "top bottom", end: "top " + (desktop ? 120 : 100) + "px", scrub: true } });
+    mm.add({ d: "(min-width: 1001px)", m: "(max-width: 1000px)" }, function (ctx) {
+      svc.forEach(function (c, i) {
+        var next = svc[i + 1]; if (!next) return;
+        gsap.to(c, { scale: 0.92, opacity: 0.55, ease: "none",
+          scrollTrigger: { trigger: next, start: "top bottom", end: "top " + (ctx.conditions.d ? 120 : 90) + "px", scrub: true } });
+      });
     });
 
     /* ---------- Statement lights up word by word ---------- */
