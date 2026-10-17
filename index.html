@@ -132,6 +132,10 @@
     .hero-glow { position: absolute; z-index: -1; right: -10vw; top: -14vw; width: 60vw; height: 60vw; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,85,230,.55), rgba(61,226,255,.18) 55%, rgba(7,11,31,0)); animation: drift 14s ease-in-out infinite alternate; }
     @keyframes drift { to { transform: translate(-6vw, 6vw) scale(1.08); } }
 
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .hero-chips .chip { background: rgba(255,255,255,.07); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.14); font-size: 13px; padding: 8px 12px; }
+    .hero-chips .chip svg { color: var(--cyan); }
+
     /* ---------- Immersive scale video ---------- */
     .immersive { position: relative; height: 240vh; }
     .im-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
@@ -159,19 +163,27 @@
     .night .h2 .dim { color: rgba(255,255,255,.35); }
     .lede { margin: 0; max-width: 40ch; font-size: 18px; color: var(--ink-2); }
     .cards { display: grid; gap: 22px; }
-    .card { position: sticky; top: calc(100px + var(--i) * 22px); display: grid; grid-template-columns: 120px minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; min-height: 360px; padding: clamp(32px, 4vw, 56px); border-radius: var(--r); background: var(--paper-2); transform-origin: 50% 0; will-change: transform; }
+    .card { position: sticky; top: calc(100px + var(--i) * 22px); display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.3fr); gap: clamp(24px, 4vw, 64px); align-items: center; padding: clamp(22px, 2.6vw, 34px) clamp(22px, 2.6vw, 34px) clamp(22px, 2.6vw, 34px) clamp(28px, 3.4vw, 48px); border-radius: var(--r); background: var(--paper-2); transform-origin: 50% 0; will-change: transform; }
     .card:nth-child(2) { background: #e9eefb; } .card:nth-child(3) { background: #dfe7fb; } .card:nth-child(4) { background: var(--ink); color: #fff; }
     .card .n { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--blue); }
     .card:nth-child(4) .n { color: var(--cyan); }
-    .card h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3.6vw, 56px); line-height: 1.02; letter-spacing: -0.04em; }
-    .card p { margin: 18px 0 0; font-size: 17px; color: var(--ink-2); max-width: 36ch; }
-    .card:nth-child(4) p { color: var(--mist); }
-    .card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; align-self: end; }
-    .card li { display: flex; gap: 12px; font-size: 18px; font-weight: 500; padding-bottom: 12px; border-bottom: 1px solid rgba(11,16,48,.1); }
-    .card:nth-child(4) li { border-color: rgba(255,255,255,.14); }
-    .card li::before { content: "–"; color: var(--blue); }
-    .card:nth-child(4) li::before { color: var(--cyan); }
-    .card li b { font-weight: 700; }
+    .card h3 { margin: 14px 0 0; font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3.4vw, 54px); line-height: 1.02; letter-spacing: -0.04em; }
+    /* icon chips instead of paragraphs */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 600; letter-spacing: -0.01em; box-shadow: 0 0 0 1px rgba(11,16,48,.08); }
+    .chip svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--blue); }
+    .card:nth-child(4) .chip, .night .chip { background: rgba(255,255,255,.08); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.14); }
+    .card:nth-child(4) .chip svg, .night .chip svg { color: var(--cyan); }
+    .cmedia { position: relative; aspect-ratio: 16 / 10; border-radius: 20px; overflow: hidden; background: var(--night-3); }
+    .cmedia video { width: 100%; height: 100%; object-fit: cover; }
+
+    /* feature ticker (visual rhythm between sections) */
+    .ticker { position: relative; overflow: hidden; padding: 26px 0; background: var(--night); border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .tk-track { display: flex; width: max-content; animation: tk 34s linear infinite; animation-play-state: paused; }
+    .ticker.on .tk-track { animation-play-state: running; }
+    .tk-track span { display: inline-flex; align-items: center; gap: 14px; padding: 0 28px; font-family: var(--display); font-weight: 700; font-size: clamp(22px, 2.6vw, 38px); letter-spacing: -0.03em; color: #fff; white-space: nowrap; }
+    .tk-track span svg { width: clamp(22px, 2.4vw, 34px); height: auto; color: var(--cyan); }
+    @keyframes tk { to { transform: translateX(-50%); } }
 
     /* ---------- Statement + blob ---------- */
     .night { position: relative; background: var(--night); color: #fff; overflow: hidden; }
@@ -212,8 +224,8 @@
     .tcard .meta { display: flex; justify-content: space-between; margin: 20px 8px 0; font-size: 13px; font-weight: 600; }
     .tcard .stars { color: #ff9f0a; letter-spacing: 2px; }
     .tcard .ver { color: var(--blue); }
-    .tcard h3 { margin: 10px 8px 0; font-family: var(--display); font-size: 22px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
-    .tcard p { margin: 10px 8px 0; font-size: 16px; line-height: 1.6; color: var(--ink-2); flex: 1; }
+    .tcard .tk-l { display: block; margin: 14px 8px 0; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+    .tcard h3 { margin: 8px 8px 0; font-family: var(--display); font-size: clamp(22px, 2vw, 28px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; flex: 1; }
     .tcard .role { display: flex; justify-content: space-between; margin: 18px 8px 0; padding-top: 14px; border-top: 1px solid rgba(11,16,48,.1); font-size: 13px; color: var(--ink-2); }
     .tcard .role b { color: var(--ink); font-weight: 600; }
 
@@ -252,7 +264,12 @@
     .closing { padding: clamp(110px, 14vw, 190px) 0 40px; }
     .closing .big { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(48px, 10vw, 176px); line-height: .95; letter-spacing: -0.05em; }
     .closing-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: end; margin-top: 48px; }
-    .closing-row p { margin: 0; max-width: 44ch; color: var(--mist); font-size: 18px; }
+    .steps { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .steps li { display: inline-flex; align-items: center; gap: 12px; font-family: var(--display); font-size: clamp(17px, 1.5vw, 21px); font-weight: 700; letter-spacing: -0.02em; }
+    .steps .si { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: rgba(255,255,255,.07); box-shadow: 0 0 0 1px rgba(255,255,255,.14); }
+    .steps .si svg { width: 24px; height: 24px; color: var(--cyan); }
+    .steps .ar2 { color: rgba(255,255,255,.3); font-size: 22px; }
+    .closing-fine { margin: 18px 0 0; font-size: 14px; color: var(--mist); }
     .magnet { position: relative; display: grid; place-items: center; width: clamp(150px, 15vw, 220px); aspect-ratio: 1; border-radius: 50%; background: linear-gradient(140deg, var(--cyan), var(--blue)); color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 18px; text-align: center; line-height: 1.15; will-change: transform; }
     .magnet span { pointer-events: none; }
     .foot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: clamp(72px, 9vw, 120px); padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); font-size: 14px; color: var(--mist); }
@@ -289,8 +306,7 @@
       .hdr nav { display: none; }
       .hero-grid { grid-template-columns: minmax(0, 1fr); }
       .hero-film { width: 100%; max-width: 520px; aspect-ratio: 16 / 10; }
-      .card { grid-template-columns: minmax(0, 1fr); min-height: 0; top: calc(84px + var(--i) * 16px); }
-      .card ul { align-self: start; }
+      .card { grid-template-columns: minmax(0, 1fr); min-height: 0; gap: 22px; top: calc(84px + var(--i) * 16px); }
       /* testimonials become a swipe row instead of three tall cards */
       .testi { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 10px; scroll-padding: 0 var(--pad); }
       .testi::-webkit-scrollbar { display: none; }
@@ -337,8 +353,7 @@
       .badge { width: 88px; height: 88px; }
       .badge .core { inset: 20px; }
       .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
-      .card { padding: 28px 24px; }
-      .card li { font-size: 16px; }
+      .card { padding: 24px 20px 20px; }
       .faq .ans { padding-right: 0; }
 
       /* type sized for one hand */
@@ -352,18 +367,20 @@
       .sec-head { margin-bottom: 36px; gap: 18px; }
       .h2 { font-size: clamp(32px, 9.4vw, 46px); }
       .lede { font-size: 16px; }
-      .card { gap: 16px; padding: 26px 22px 24px; border-radius: 24px; }
-      .card h3 { font-size: 28px; }
-      .card p { margin-top: 10px; font-size: 15px; }
-      .card ul { gap: 10px; }
-      .card li { font-size: 15px; padding-bottom: 10px; }
+      .card { gap: 18px; padding: 22px 18px 18px; border-radius: 24px; }
+      .card h3 { font-size: 28px; margin-top: 10px; }
+      .chips { margin-top: 16px; gap: 6px; }
+      .chip { font-size: 13px; padding: 8px 12px; }
+      .cmedia { border-radius: 16px; }
+      .steps .si { width: 44px; height: 44px; border-radius: 14px; }
+      .steps .ar2 { display: none; }
+      .steps { gap: 12px 18px; }
       .statement { padding: 110px 0; }
       .statement .big { font-size: clamp(30px, 8.8vw, 46px); }
       .products { padding: 80px 0 64px; }
       .pcard h3 { font-size: 24px; }
       .pcard p { font-size: 15px; }
-      .tcard h3 { font-size: 20px; }
-      .tcard p { font-size: 15px; }
+      .tcard h3 { font-size: 21px; }
       .about blockquote { font-size: 24px; }
       .stats { gap: 28px 18px; margin-top: 64px; }
       .stat b { font-size: clamp(40px, 12vw, 56px); }
@@ -373,7 +390,6 @@
       .closing { padding: 110px 0 calc(110px + env(safe-area-inset-bottom, 0px)); }
       .closing .big { font-size: clamp(48px, 15vw, 76px); }
       .closing-row { margin-top: 32px; gap: 28px; }
-      .closing-row p { font-size: 16px; }
       .magnet { width: 100%; aspect-ratio: auto; min-height: 60px; border-radius: 999px; font-size: 17px; }
       .magnet br { display: none; }
       .foot { margin-top: 64px; gap: 10px; }
@@ -390,7 +406,7 @@
       .im-box { clip-path: none; }
       .im-cap { opacity: 1; }
       @media (max-width: 1000px) { .im-stage { aspect-ratio: auto; padding: 56px 0; } }
-      .slot span, .blob, .badge svg.ring, .hero-glow { animation: none; }
+      .slot span, .blob, .badge svg.ring, .hero-glow, .tk-track { animation: none; }
     }
   </style>
 </head>
@@ -458,11 +474,12 @@
               <span class="core"><svg viewBox="185 208 731 596"><polygon fill="#fff" points="185,804 463,208 638,208 916,804 771,804 550,315 330,804"/><polygon fill="#3de2ff" points="550,533 673,804 428,804"/></svg></span>
             </div>
             <div>
-              <p><b>Bukan CRM biasa. Bukan spreadsheet.</b>Siapkah tim sales Anda membalas, membagi, dan mencatat setiap lead dalam hitungan detik?</p>
+              <p><b>Bukan CRM biasa. Bukan spreadsheet.</b></p>
               <div class="hero-cta">
                 <a class="btn light wa" href="#">Coba Gratis 5 Hari <span class="ar" aria-hidden="true">→</span></a>
                 <a class="btn line" href="https://playbook.sentaris.cloud" target="_blank" rel="noopener">Lihat demo</a>
               </div>
+              <div class="hero-chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="12" rx="2"/><path d="M12 8.5v12M3.5 12.5h17M12 8.5C10 4 6.5 4.5 7 7c.3 1.3 2.6 1.5 5 1.5zM12 8.5c2-4.5 5.5-4 5-1.5-.3 1.3-2.6 1.5-5 1.5z"/></svg>Gratis 5 hari</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Onboarding hari ini</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h5v16h-5M10 8l-4 4 4 4M6 12h10"/></svg>Berhenti kapan saja</span></div>
             </div>
           </div>
           <div class="hero-film" data-hero data-cursor="Putar">
@@ -500,40 +517,39 @@
         <div class="sec-head">
           <div>
             <p class="eyebrow" data-reveal>Layanan</p>
-            <h2 class="h2" id="svc-title" data-reveal>Tiga hal yang tidak diberikan CRM lain. <span class="dim">Ditambah satu.</span></h2>
+            <h2 class="h2" id="svc-title" data-reveal>Tiga hal yang tidak diberikan CRM lain.</h2>
           </div>
-          <p class="lede" data-reveal>Bukan daftar fitur panjang. Yang langsung terasa di minggu pertama.</p>
         </div>
         <div class="cards">
           <article class="card" style="--i:0">
-            <span class="n">01</span>
-            <div><h3>Nomor WhatsApp tanpa batas</h3><p>Tambah berapa pun nomor sales — 5 atau 50 — semuanya masuk satu dasbor. Sales tetap pakai WhatsApp di HP seperti biasa.</p></div>
-            <ul><li>5 atau 50 nomor, satu dasbor</li><li>Sales tetap pakai HP</li><li><b>Leader melihat semuanya</b></li></ul>
+            <div><span class="n">01</span><h3>Nomor WhatsApp tanpa batas</h3>
+              <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg>50+ nomor</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Leader lihat semua</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.9-3.5 3.4-5.5 6.5-5.5s5.6 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.5 3.5 5.2"/></svg>Tetap di HP sales</span></div></div>
+            <div class="cmedia"><video data-src="2_unlimited_numbers.mp4" muted loop playsinline preload="none" aria-label="Video: nomor WhatsApp tanpa batas"></video></div>
           </article>
           <article class="card" style="--i:1">
-            <span class="n">02</span>
-            <div><h3>ADS Dashboard di dalam CRM</h3><p>Tahu iklan Meta mana yang jadi chat, lead, dan closing — tanpa membuka Ads Manager.</p></div>
-            <ul><li>Skor iklan 1–10 dari chat masuk</li><li>ROAS asli &amp; biaya per chat</li><li><b>Sales mana yang closing</b></li></ul>
+            <div><span class="n">02</span><h3>ADS Dashboard di dalam CRM</h3>
+              <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 16v-5M11 16V7M16 16v-8M21 4l-5 4-5-3-5 4"/></svg>Skor iklan 1–10</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5c-.5-.9-1.5-1.5-2.5-1.5-1.4 0-2.5.8-2.5 2s1.1 1.6 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2c-1 0-2-.6-2.5-1.5M12 6.5v1.5M12 16v1.5"/></svg>ROAS asli</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16.5 9.5"/></svg>Sales yang closing</span></div></div>
+            <div class="cmedia"><video data-src="1_ads_dashboard.mp4" muted loop playsinline preload="none" aria-label="Video: ADS Dashboard"></video></div>
           </article>
           <article class="card" style="--i:2">
-            <span class="n">03</span>
-            <div><h3>Mobile friendly</h3><p>Dasbor penuh di HP: balas chat, pindah tahap lead, lihat skor iklan. Owner bisa memantau dari mana saja — tanpa laptop.</p></div>
-            <ul><li>iPhone &amp; Android</li><li>Notifikasi push</li><li><b>Pantau dari mana saja</b></li></ul>
-          </article>
-          <article class="card" style="--i:3">
-            <span class="n">04</span>
-            <div><h3>Horus AI 24 jam</h3><p>Membalas lead dalam hitungan detik, siang maupun malam. Paginya tim tinggal melanjutkan chat.</p></div>
-            <ul><li>Lima gaya persona</li><li>Sopan, sesuai gaya bisnis Anda</li><li><b>Tidak mengarang harga</b></li></ul>
+            <div><span class="n">03</span><h3>Mobile friendly</h3>
+              <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg>iPhone &amp; Android</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>Notifikasi push</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Pantau dari mana saja</span></div></div>
+            <div class="cmedia"><video data-src="3_mobile_friendly.mp4" muted loop playsinline preload="none" aria-label="Video: tampilan mobile"></video></div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- ===================== FEATURE TICKER ===================== -->
+    <div class="ticker" data-anim aria-label="Fitur SENTARIS: Multi-WhatsApp, ADS Dashboard, Horus AI, Auto Follow-up, Kanban Pipeline, Lead Auto-Transfer, Notifikasi Push, Leads Database">
+      <div class="tk-track" aria-hidden="true"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg>Multi-WhatsApp</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 16v-5M11 16V7M16 16v-8M21 4l-5 4-5-3-5 4"/></svg>ADS Dashboard</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5L4.5 13.5H12l-1 8 8.5-11H12z"/></svg>Horus AI</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.7L4 15.5M4 20v-4.5h4.5"/></svg>Auto Follow-up</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg>Kanban Pipeline</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.9-3.5 3.4-5.5 6.5-5.5s5.6 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.5 3.5 5.2"/></svg>Lead Auto-Transfer</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>Notifikasi Push</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/><path d="M4.5 5.5v13c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-13M4.5 12c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5"/></svg>Leads Database</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg>Multi-WhatsApp</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 16v-5M11 16V7M16 16v-8M21 4l-5 4-5-3-5 4"/></svg>ADS Dashboard</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5L4.5 13.5H12l-1 8 8.5-11H12z"/></svg>Horus AI</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.7L4 15.5M4 20v-4.5h4.5"/></svg>Auto Follow-up</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg>Kanban Pipeline</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.9-3.5 3.4-5.5 6.5-5.5s5.6 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.5 3.5 5.2"/></svg>Lead Auto-Transfer</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>Notifikasi Push</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/><path d="M4.5 5.5v13c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-13M4.5 12c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5"/></svg>Leads Database</span></div>
+    </div>
+
     <!-- ===================== STATEMENT + BLOB ===================== -->
     <section class="night statement" aria-label="Pernyataan">
       <div class="blob-wrap" aria-hidden="true"><div class="blob"></div></div>
       <div class="wrap">
-        <p class="big" id="statement"><b>Setiap lead</b> dibalas, dibagi, dan dicatat — dari iklan pertama sampai closing, dalam satu layar.</p>
+        <p class="big" id="statement"><b>Setiap lead</b> dibalas, dibagi, dan dicatat. Dalam satu layar.</p>
       </div>
     </section>
 
@@ -542,53 +558,33 @@
       <div class="wrap sec-head">
         <div>
           <p class="eyebrow" data-reveal>Produk</p>
-          <h2 class="h2" id="prod-title" data-reveal>Lihat SENTARIS bekerja. <span class="dim">Geser terus.</span></h2>
+          <h2 class="h2" id="prod-title" data-reveal>Di dalam dasbor. <span class="dim">Geser terus.</span></h2>
         </div>
       </div>
       <div class="hz" id="hz">
         <div class="hz-track" id="hzTrack">
-          <article class="pcard" data-cursor="Lihat">
-            <div class="pm"><video data-src="2_unlimited_numbers.mp4" muted loop playsinline preload="none" aria-label="Video: multi-nomor"></video></div>
-            <div class="pt"><h3>Multi-Nomor Sales</h3><span class="tag">01 · Video</span></div>
-            <p>50+ nomor aktif di satu dasbor hari ini.</p>
-          </article>
-          <article class="pcard" data-cursor="Lihat">
-            <div class="pm"><video data-src="1_ads_dashboard.mp4" muted loop playsinline preload="none" aria-label="Video: ADS Dashboard"></video></div>
-            <div class="pt"><h3>ADS Dashboard</h3><span class="tag">02 · Video</span></div>
-            <p>Belanja iklan ↔ chat masuk, satu layar.</p>
-          </article>
-          <article class="pcard" data-cursor="Lihat">
-            <div class="pm"><video data-src="3_mobile_friendly.mp4" muted loop playsinline preload="none" aria-label="Video: mobile"></video></div>
-            <div class="pt"><h3>Mobile</h3><span class="tag">03 · Video</span></div>
-            <p>iPhone &amp; Android · notifikasi push.</p>
+          <article class="pcard" data-cursor="Buka" data-lightbox="fitur1.jpg">
+            <div class="pm"><img src="fitur1.jpg" alt="Pipeline Kanban" width="1200" height="700" loading="lazy" decoding="async" /></div>
+            <div class="pt"><h3>Kanban Pipeline</h3><span class="tag">01 · Dasbor</span></div>
           </article>
           <article class="pcard" data-cursor="Buka" data-lightbox="fitur2.jpg">
             <div class="pm"><img src="fitur2.jpg" alt="Horus AI 24 jam" width="1200" height="700" loading="lazy" decoding="async" /></div>
-            <div class="pt"><h3>Horus AI</h3><span class="tag">04 · Dasbor</span></div>
-            <p>Lima gaya persona. Balas ramah tanpa ngawur harga.</p>
-          </article>
-          <article class="pcard" data-cursor="Buka" data-lightbox="fitur1.jpg">
-            <div class="pm"><img src="fitur1.jpg" alt="Pipeline Kanban" width="1200" height="700" loading="lazy" decoding="async" /></div>
-            <div class="pt"><h3>Kanban Pipeline</h3><span class="tag">05 · Dasbor</span></div>
-            <p>Geser lead dari Hot Leads sampai Sudah Beli.</p>
+            <div class="pt"><h3>Horus AI</h3><span class="tag">02 · Dasbor</span></div>
           </article>
           <article class="pcard" data-cursor="Buka" data-lightbox="fitur3.jpg">
             <div class="pm"><img src="fitur3.jpg" alt="Auto Follow-up" width="1200" height="700" loading="lazy" decoding="async" /></div>
-            <div class="pt"><h3>Auto Follow-up</h3><span class="tag">06 · Dasbor</span></div>
-            <p>Berhenti otomatis saat calon pelanggan membalas.</p>
+            <div class="pt"><h3>Auto Follow-up</h3><span class="tag">03 · Dasbor</span></div>
           </article>
           <article class="pcard" data-cursor="Buka" data-lightbox="fitur4.jpg">
             <div class="pm"><img src="fitur4.jpg" alt="ADS Dashboard: belanja iklan vs chat masuk" width="1200" height="700" loading="lazy" decoding="async" /></div>
-            <div class="pt"><h3>Rekap Iklan</h3><span class="tag">07 · Dasbor</span></div>
-            <p>ROAS asli, biaya per chat terverifikasi, omzet.</p>
+            <div class="pt"><h3>Rekap Iklan</h3><span class="tag">04 · Dasbor</span></div>
           </article>
           <article class="pcard" data-cursor="Buka" data-lightbox="fitur5.jpg">
             <div class="pm"><img src="fitur5.jpg" alt="Papan pantau nomor sales" width="1200" height="700" loading="lazy" decoding="async" /></div>
-            <div class="pt"><h3>Papan Pantau</h3><span class="tag">08 · Dasbor</span></div>
-            <p>Tandai chat yang belum dibalas lebih dari 15–30 menit.</p>
+            <div class="pt"><h3>Papan Pantau</h3><span class="tag">05 · Dasbor</span></div>
           </article>
         </div>
-        <div class="wrap hz-foot" aria-hidden="true"><div class="hz-bar"><i id="hzBar"></i></div><span class="hz-count" id="hzCount">01 / 08</span></div>
+        <div class="wrap hz-foot" aria-hidden="true"><div class="hz-bar"><i id="hzBar"></i></div><span class="hz-count" id="hzCount">01 / 05</span></div>
         <p class="wrap swipe-hint">Geser untuk melihat produk lainnya →</p>
       </div>
     </section>
@@ -601,28 +597,28 @@
             <p class="eyebrow" data-reveal>Testimoni riil klien</p>
             <h2 class="h2" id="t-title" data-reveal>Bukti nyata dari pemilik bisnis <span class="dim">&amp; tim sales.</span></h2>
           </div>
-          <p class="lede" data-reveal>Tangkapan layar percakapan asli dari WhatsApp klien aktif SENTARIS. Klik foto untuk melihat chat lengkap.</p>
+          <p class="lede" data-reveal>Chat asli dari WhatsApp klien. Ketuk foto untuk melihat lengkap.</p>
         </div>
         <div class="testi">
           <article class="tcard" data-reveal>
             <button class="shot" type="button" data-lightbox="WhatsApp2.jpg" data-cursor="Buka" aria-label="Lihat chat lengkap: Tracking Iklan Meta s/d Closing"><img src="WhatsApp2.jpg" alt="" loading="lazy" decoding="async" /></button>
             <div class="meta"><span class="stars" aria-label="5 dari 5 bintang">★★★★★</span><span class="ver">Terverifikasi</span></div>
-            <h3>Tracking Iklan Meta s/d Closing</h3>
-            <p>“Dulu saya cuma tahu total belanja iklan. Sekarang tiap pagi kelihatan iklan mana yang jadi chat dan sales siapa yang closing! Tim 12 sales saya jadi makin produktif dan ga ada lead kelewatan lagi.”</p>
+            <span class="tk-l">Tracking Iklan Meta s/d Closing</span>
+            <h3>“Ga ada lead kelewatan lagi.”</h3>
             <div class="role"><b>Showroom Owner</b><span>12 Sales Team</span></div>
           </article>
           <article class="tcard" data-reveal>
             <button class="shot" type="button" data-lightbox="WhatsApp3.jpg" data-cursor="Buka" aria-label="Lihat chat lengkap: Lead Auto-Transfer & Anti Nganggur"><img src="WhatsApp3.jpg" alt="" loading="lazy" decoding="async" /></button>
             <div class="meta"><span class="stars" aria-label="5 dari 5 bintang">★★★★★</span><span class="ver">Terverifikasi</span></div>
-            <h3>Lead Auto-Transfer &amp; Anti Nganggur</h3>
-            <p>“Lead yang didiamkan 5 menit otomatis langsung pindah ke sales lain. Tidak ada lagi lead nganggur di HP orang yang lagi cuti. Tim 9 sales saya makin rapi kerjanya.”</p>
+            <span class="tk-l">Lead Auto-Transfer &amp; Anti Nganggur</span>
+            <h3>“Tidak ada lagi lead nganggur.”</h3>
             <div class="role"><b>Sales Manager</b><span>9 Sales Team</span></div>
           </article>
           <article class="tcard" data-reveal>
             <button class="shot" type="button" data-lightbox="WhatsApp1.jpg" data-cursor="Buka" aria-label="Lihat chat lengkap: Horus AI 24 Jam"><img src="WhatsApp1.jpg" alt="" loading="lazy" decoding="async" /></button>
             <div class="meta"><span class="stars" aria-label="5 dari 5 bintang">★★★★★</span><span class="ver">Terverifikasi</span></div>
-            <h3>Horus AI 24 Jam</h3>
-            <p>“Horus AI membalas tengah malam dengan bahasa yang sopan dan tidak mengarang harga sama sekali! Paginya tim saya tinggal melanjutkan chat aja. Kebantu banget buat 5 nomor CS kami.”</p>
+            <span class="tk-l">Horus AI 24 Jam</span>
+            <h3>“Tidak mengarang harga sama sekali!”</h3>
             <div class="role"><b>Owner Klinik</b><span>5 Nomor CS</span></div>
           </article>
         </div>
@@ -632,7 +628,7 @@
         <div class="about" id="tentang" style="margin-top:clamp(110px,14vw,190px)">
           <div>
             <p class="eyebrow" data-reveal>Tentang kami</p>
-            <blockquote data-reveal>“SENTARIS lahir karena tim sales kami tumbuh sampai 60 orang dan tidak ada CRM yang sanggup mengikuti WhatsApp kami. Sekarang setiap chat, iklan, dan lead ada di satu layar — dan saya bisa memantaunya dari HP.”</blockquote>
+            <blockquote data-reveal>“Sekarang setiap chat, iklan, dan lead ada di satu layar — dan saya bisa memantaunya dari HP.”</blockquote>
             <div class="who" data-reveal>
               <span class="av" aria-hidden="true"><svg viewBox="185 208 731 596"><polygon fill="#fff" points="185,804 463,208 638,208 916,804 771,804 550,315 330,804"/><polygon fill="#3de2ff" points="550,533 673,804 428,804"/></svg></span>
               <div><b>Jefferson Noah</b><span>Founder SENTARIS · Digital Marketing Specialist</span></div>
@@ -657,7 +653,7 @@
             <h2 class="h2" data-reveal>Sebelum Anda <span class="dim">chat kami.</span></h2>
           </div>
           <div data-reveal>
-            <details open><summary>Apakah perlu WhatsApp Business API?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Tidak. Nomor sales dihubungkan lewat scan QR (perangkat tertaut) dan tetap dipakai di HP seperti biasa — tanpa biaya per pesan, tanpa mengubah cara kerja sales.</div></details>
+            <details><summary>Apakah perlu WhatsApp Business API?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Tidak. Nomor sales dihubungkan lewat scan QR (perangkat tertaut) dan tetap dipakai di HP seperti biasa — tanpa biaya per pesan, tanpa mengubah cara kerja sales.</div></details>
             <details><summary>Berapa nomor yang bisa dihubungkan?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Tanpa batas. SENTARIS hari ini menjalankan 50+ nomor sales dalam satu dasbor, dengan status koneksi tiap nomor terpantau.</div></details>
             <details><summary>Bagaimana dengan keamanan data?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Setiap bisnis mendapat room &amp; database sendiri. Token iklan Meta disimpan terenkripsi, dan audit log mencatat siapa membuka percakapan siapa. Peran admin, leader, sales, dan tamu punya cakupan data yang berbeda.</div></details>
             <details><summary>Berapa lama onboarding?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Hari yang sama: room dibuat, nomor sales di-scan, tim langsung bekerja. Nomor bisa ditambah bertahap.</div></details>
@@ -674,7 +670,16 @@
       <p class="eyebrow" data-reveal>Coba gratis 5 hari</p>
       <h2 class="big" data-reveal>Mari mulai<br /><span class="grad">hari ini.</span></h2>
       <div class="closing-row">
-        <p data-reveal>Kami pasang room untuk tim Anda, Anda scan QR nomor sales, chat pertama masuk hari itu juga. Lalu langganan bulanan per room — berhenti kapan saja, data tetap milik Anda.</p>
+        <div data-reveal>
+          <ol class="steps" aria-label="Cara mulai">
+            <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.5a8 8 0 0 1-11.8 7L3.5 20l1.6-4.6A8 8 0 1 1 20.5 11.5z"/></svg></span>Chat kami</li>
+            <li class="ar2" aria-hidden="true">→</li>
+            <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5L12 4l8 6.5V20H4z"/><path d="M9.5 20v-5h5v5"/></svg></span>Room dipasang</li>
+            <li class="ar2" aria-hidden="true">→</li>
+            <li><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1"/><path d="M14 14h3v3h-3zM20.5 14v.01M20.5 20.5h-3.5v-3"/></svg></span>Scan QR</li>
+          </ol>
+          <p class="closing-fine">Chat pertama masuk hari itu juga · Berhenti kapan saja</p>
+        </div>
         <a class="magnet wa" href="#" id="magnet" data-cursor="Chat"><span>Coba Gratis<br /> 5 Hari →</span></a>
       </div>
       <div class="foot">
@@ -793,6 +798,10 @@
       htr.addEventListener("scroll", function () { if (!hraf) hraf = requestAnimationFrame(hupd); }, { passive: true });
       hupd();
     }
+
+    /* ---------- Loops (ticker, chat graphic) only run while on screen ---------- */
+    var aio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle("on", e.isIntersecting && !reduce); }); }, { threshold: 0.1 });
+    $$("[data-anim]").forEach(function (el) { aio.observe(el); });
 
     /* ---------- Team photo: never wider than its real pixels ---------- */
     var timg = $(".team img");
@@ -921,8 +930,11 @@
     mm.add({ d: "(min-width: 1001px)", m: "(max-width: 1000px)" }, function (ctx) {
       svc.forEach(function (c, i) {
         var next = svc[i + 1]; if (!next) return;
-        gsap.to(c, { scale: 0.92, opacity: 0.55, ease: "none",
-          scrollTrigger: { trigger: next, start: "top bottom", end: "top " + (ctx.conditions.d ? 120 : 90) + "px", scrub: true } });
+        var off = (ctx.conditions.d ? 120 : 90) + "px";
+        gsap.to(c, { scale: 0.94, ease: "none",
+          scrollTrigger: { trigger: next, start: "top bottom", end: "top " + off, scrub: true } });
+        gsap.to(c.children, { opacity: 0, ease: "none",                     /* content fades, the card edge stays as a clean stripe */
+          scrollTrigger: { trigger: next, start: "top 65%", end: "top " + off, scrub: true } });
       });
     });
 
