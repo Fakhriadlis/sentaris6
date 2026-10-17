@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>SENTARIS — Nomor 1 AI CRM Content + Ads + Sales</title>
+  <meta name="description" content="Nomor 1 AI CRM Content + Ads + Sales, dalem 1 dashboard. Semua nomor WhatsApp sales, iklan Meta terukur sampai closing, dan AI yang membalas lead dalam hitungan detik. Coba gratis 5 hari." />
+  <meta name="theme-color" content="#070b1f" />
+  <link rel="icon" type="image/jpeg" href="2.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add("js");</script>
+  <style>
+    /* =========================================================================
+       SENTARIS — model: preloader counter · scroll section transitions ·
+       immersive scale video · stacking cards · liquid horizontal scroll ·
+       fullscreen menu · custom cursor. Colours from the SENTARIS logo.
+       ========================================================================= */
+    :root {
+      --night: #070b1f;      /* logo navy, deepened */
+      --night-2: #0e1435;
+      --night-3: #1a2350;
+      --paper: #ffffff;
+      --paper-2: #f3f5fa;
+      --ink: #0b1030;
+      --ink-2: #545c7a;
+      --mist: #a7b0cf;       /* muted text on dark */
+      --blue: #0055e6;
+      --cyan: #3de2ff;
+      --display: "Inter Tight", Inter, -apple-system, "Segoe UI", Arial, sans-serif;
+      --text: Inter, -apple-system, "Segoe UI", Arial, sans-serif;
+      --pad: clamp(20px, 4vw, 64px);
+      --r: 28px;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    *, *::before, *::after { box-sizing: inherit; }
+    html { -webkit-text-size-adjust: 100%; }
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    body { margin: 0; background: var(--night); color: #fff; font-family: var(--text); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body.locked { overflow: hidden; }
+    img, video, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    :focus-visible { outline: 3px solid rgba(61,226,255,.6); outline-offset: 3px; border-radius: 8px; }
+    .wrap { width: min(1360px, calc(100% - var(--pad) * 2)); margin: 0 auto; }
+    .grad { background: linear-gradient(90deg, var(--cyan), #6ea8ff 55%, var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .mask { display: block; overflow: hidden; padding-bottom: .06em; }
+    .mask > span { display: block; }
+    .js .mask > span { transform: translateY(105%); }
+
+    /* ---------- Buttons ---------- */
+    .btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap; min-height: 52px; padding: 14px 26px; border-radius: 999px; font-family: var(--display); font-size: 16px; font-weight: 600; letter-spacing: -0.01em; overflow: hidden; isolation: isolate; transition: color .35s ease, transform .3s ease; }
+    .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; transform: translateY(101%); transition: transform .45s cubic-bezier(.7,0,.2,1); }
+    .btn:hover::before { transform: none; }
+    .btn:active { transform: scale(.97); }
+    .btn.light { background: #fff; color: var(--ink); }
+    .btn.light::before { background: var(--cyan); }
+    .btn.line { color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+    .btn.line::before { background: #fff; }
+    .btn.line:hover { color: var(--ink); }
+    .btn.dark { background: var(--ink); color: #fff; }
+    .btn.dark::before { background: var(--blue); }
+    .btn .ar { transition: transform .35s ease; }
+    .btn:hover .ar { transform: translateX(4px); }
+
+    /* ---------- Preloader ---------- */
+    .pre { position: fixed; inset: 0; z-index: 200; background: var(--night); color: #fff; display: flex; flex-direction: column; justify-content: space-between; padding: calc(28px + env(safe-area-inset-top, 0px)) var(--pad) calc(28px + env(safe-area-inset-bottom, 0px)); }
+    .no-js .pre, html:not(.js) .pre { display: none; }
+    .pre-top { display: flex; justify-content: space-between; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--mist); }
+    .pre-word { display: flex; justify-content: center; gap: .02em; font-family: var(--display); font-weight: 800; font-size: clamp(56px, 15vw, 230px); line-height: .9; letter-spacing: -0.04em; overflow: hidden; }
+    .pre-word span { display: inline-block; transform: translateY(110%); }
+    .pre-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+    .odo { display: flex; font-family: var(--display); font-weight: 700; font-size: clamp(64px, 11vw, 160px); line-height: 1; letter-spacing: -0.04em; height: 1em; overflow: hidden; }
+    .odo .col { display: flex; flex-direction: column; transition: transform .25s cubic-bezier(.3,.7,.2,1); }
+    .odo .col span { height: 1em; }
+    .odo .pc { font-size: .45em; margin: .12em 0 0 .08em; color: var(--mist); }
+    .pre-bar { width: min(320px, 40vw); height: 2px; background: rgba(255,255,255,.15); margin-bottom: 1.4em; }
+    .pre-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--blue)); transform-origin: left; transform: scaleX(0); }
+
+    /* ---------- Header + fullscreen menu ---------- */
+    .hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 90; mix-blend-mode: difference; color: #fff; }
+    .hdr-in { display: flex; align-items: center; gap: 28px; height: 84px; width: min(1440px, calc(100% - var(--pad) * 2)); margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; margin-right: auto; font-family: var(--display); font-size: 20px; font-weight: 800; letter-spacing: .04em; }
+    .logo i { width: 10px; height: 10px; border-radius: 50%; background: #fff; }
+    .hdr nav { display: flex; gap: 30px; }
+    .hdr nav a { position: relative; font-size: 15px; font-weight: 500; }
+    .hdr nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .4s ease; }
+    .hdr nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .hdr .talk { font-size: 15px; font-weight: 600; padding: 10px 18px; border-radius: 999px; box-shadow: inset 0 0 0 1px currentColor; }
+    .burger { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; box-shadow: inset 0 0 0 1px currentColor; }
+    .burger span { position: relative; width: 16px; height: 2px; background: currentColor; transition: background .3s ease; }
+    .burger span::before, .burger span::after { content: ""; position: absolute; left: 0; width: 16px; height: 2px; background: currentColor; transition: transform .4s ease, top .4s ease; }
+    .burger span::before { top: -5px; } .burger span::after { top: 5px; }
+    .menu-open .burger span { background: transparent; }
+    .menu-open .burger span::before { top: 0; transform: rotate(45deg); }
+    .menu-open .burger span::after { top: 0; transform: rotate(-45deg); }
+    .menu { position: fixed; inset: 0; z-index: 80; background: var(--night-2); color: #fff; display: grid; grid-template-rows: 1fr auto; padding: 120px var(--pad) 40px; clip-path: inset(0 0 100% 0); transition: clip-path .7s cubic-bezier(.7,0,.2,1); }
+    .menu-open .menu { clip-path: inset(0 0 0 0); }
+    .menu ol { list-style: none; margin: 0; padding: 0; align-self: center; counter-reset: m; }
+    .menu li { overflow: hidden; }
+    .menu li a { display: flex; align-items: baseline; gap: 18px; font-family: var(--display); font-weight: 700; font-size: clamp(40px, 8vw, 104px); line-height: 1.04; letter-spacing: -0.04em; transform: translateY(110%); transition: transform .7s cubic-bezier(.2,.8,.2,1), color .3s ease; }
+    .menu li a::before { counter-increment: m; content: "0" counter(m); font-size: 14px; font-weight: 500; letter-spacing: .1em; color: var(--mist); }
+    .menu li a:hover { color: var(--cyan); }
+    .menu-open .menu li a { transform: none; }
+    .menu-open .menu li:nth-child(2) a { transition-delay: .06s; } .menu-open .menu li:nth-child(3) a { transition-delay: .12s; }
+    .menu-open .menu li:nth-child(4) a { transition-delay: .18s; } .menu-open .menu li:nth-child(5) a { transition-delay: .24s; }
+    .menu-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--mist); border-top: 1px solid rgba(255,255,255,.12); padding-top: 22px; }
+    .menu-foot a { color: #fff; }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; min-height: 100vh; min-height: 100svh; padding: 150px 0 72px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+    .hero h1 { margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(42px, 6.6vw, 112px); line-height: .98; letter-spacing: -0.045em; }
+    .hero h1 b { font-weight: 800; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: end; margin-top: 48px; }
+    .hero-side { display: flex; gap: 22px; align-items: flex-start; max-width: 520px; }
+    .badge { position: relative; flex-shrink: 0; width: 104px; height: 104px; }
+    .badge svg.ring { position: absolute; inset: 0; animation: spin 14s linear infinite; }
+    .badge svg.ring text { font-family: var(--display); font-size: 9.6px; font-weight: 600; letter-spacing: .32em; fill: var(--mist); text-transform: uppercase; }
+    .badge .core { position: absolute; inset: 24px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(180deg, #0a1d8c, #0055e6); }
+    .badge .core svg { width: 30px; height: auto; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-side p { margin: 0; font-size: 17px; line-height: 1.55; color: var(--mist); }
+    .hero-side p b { display: block; margin-bottom: 6px; font-family: var(--display); font-size: 22px; line-height: 1.15; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .hero-film { position: relative; width: clamp(260px, 26vw, 420px); aspect-ratio: 4 / 3; border-radius: 22px; overflow: hidden; background: var(--night-3); }
+    .hero-film video { width: 100%; height: 100%; object-fit: cover; }
+    .hero-film span { position: absolute; left: 14px; bottom: 12px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #fff; }
+    .hero-glow { position: absolute; z-index: -1; right: -10vw; top: -14vw; width: 60vw; height: 60vw; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,85,230,.55), rgba(61,226,255,.18) 55%, rgba(7,11,31,0)); animation: drift 14s ease-in-out infinite alternate; }
+    @keyframes drift { to { transform: translate(-6vw, 6vw) scale(1.08); } }
+
+    /* ---------- Immersive scale video ---------- */
+    .immersive { position: relative; height: 240vh; }
+    .im-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+    .im-box { position: absolute; inset: 0; clip-path: inset(22% 30% 22% 30% round 28px); will-change: clip-path; background: var(--night-3); }
+    .im-box video { width: 100%; height: 100%; object-fit: cover; }
+    .im-box::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,11,31,.15), rgba(7,11,31,.65)); }
+    .im-cap { position: absolute; z-index: 2; left: var(--pad); right: var(--pad); bottom: clamp(36px, 8vh, 80px); display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; opacity: 0; }
+    .im-cap h2 { margin: 0; max-width: 16ch; font-family: var(--display); font-size: clamp(34px, 5vw, 76px); line-height: 1; font-weight: 700; letter-spacing: -0.04em; }
+
+    /* ---------- Word rotator strip ---------- */
+    .rot { padding: clamp(80px, 12vw, 160px) 0; }
+    .rot p { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(40px, 8vw, 132px); line-height: 1.02; letter-spacing: -0.045em; }
+    .slot { display: inline-block; height: 1.02em; overflow: hidden; vertical-align: bottom; }
+    .slot span { display: block; animation: slot 7.5s cubic-bezier(.7,0,.2,1) infinite; }
+    @keyframes slot { 0%, 26% { transform: translateY(0); } 33%, 59% { transform: translateY(-100%); } 66%, 92% { transform: translateY(-200%); } 100% { transform: translateY(-300%); } }
+    .rot .muted { color: rgba(255,255,255,.28); }
+
+    /* ---------- Services: stacking cards (white sheet slides over) ---------- */
+    .sheet { position: relative; z-index: 2; background: var(--paper); color: var(--ink); border-radius: 40px 40px 0 0; padding: clamp(80px, 10vw, 140px) 0 clamp(80px, 10vw, 120px); }
+    .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: clamp(48px, 6vw, 80px); }
+    .eyebrow { margin: 0 0 18px; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); }
+    .night .eyebrow { color: var(--cyan); }
+    .h2 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(36px, 5.4vw, 84px); line-height: 1; letter-spacing: -0.045em; }
+    .h2 .dim { color: #9aa1b8; }
+    .night .h2 .dim { color: rgba(255,255,255,.35); }
+    .lede { margin: 0; max-width: 40ch; font-size: 18px; color: var(--ink-2); }
+    .cards { display: grid; gap: 22px; }
+    .card { position: sticky; top: calc(100px + var(--i) * 22px); display: grid; grid-template-columns: 120px minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; min-height: 360px; padding: clamp(32px, 4vw, 56px); border-radius: var(--r); background: var(--paper-2); transform-origin: 50% 0; will-change: transform; }
+    .card:nth-child(2) { background: #e9eefb; } .card:nth-child(3) { background: #dfe7fb; } .card:nth-child(4) { background: var(--ink); color: #fff; }
+    .card .n { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--blue); }
+    .card:nth-child(4) .n { color: var(--cyan); }
+    .card h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3.6vw, 56px); line-height: 1.02; letter-spacing: -0.04em; }
+    .card p { margin: 18px 0 0; font-size: 17px; color: var(--ink-2); max-width: 36ch; }
+    .card:nth-child(4) p { color: var(--mist); }
+    .card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; align-self: end; }
+    .card li { display: flex; gap: 12px; font-size: 18px; font-weight: 500; padding-bottom: 12px; border-bottom: 1px solid rgba(11,16,48,.1); }
+    .card:nth-child(4) li { border-color: rgba(255,255,255,.14); }
+    .card li::before { content: "–"; color: var(--blue); }
+    .card:nth-child(4) li::before { color: var(--cyan); }
+    .card li b { font-weight: 700; }
+
+    /* ---------- Statement + blob ---------- */
+    .night { position: relative; background: var(--night); color: #fff; overflow: hidden; }
+    .statement { padding: clamp(110px, 14vw, 200px) 0; }
+    .blob-wrap { position: absolute; z-index: 0; left: 50%; top: 50%; width: min(70vw, 900px); aspect-ratio: 1; margin: calc(min(70vw, 900px) / -2) 0 0 calc(min(70vw, 900px) / -2); will-change: transform; }
+    .blob { position: absolute; inset: 0; border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; background: conic-gradient(from 200deg, #0055e6, #3de2ff, #2a2fd6, #0a1d8c, #0055e6); opacity: .42; animation: morph 18s ease-in-out infinite alternate, spin 40s linear infinite; }
+    .blob::after { content: ""; position: absolute; inset: 14%; border-radius: inherit; background: var(--night); opacity: .55; }
+    @keyframes morph { 50% { border-radius: 63% 37% 38% 62% / 56% 63% 37% 44%; } 100% { border-radius: 38% 62% 54% 46% / 62% 38% 62% 38%; } }
+    .statement .big { position: relative; z-index: 1; margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(36px, 6.4vw, 104px); line-height: 1.02; letter-spacing: -0.045em; text-align: center; }
+    .statement .big b { font-weight: 800; text-transform: uppercase; }
+    .js .statement .big .w { opacity: .15; }
+
+    /* ---------- Products: liquid horizontal scroll ---------- */
+    .products { padding: clamp(80px, 10vw, 120px) 0 clamp(60px, 8vw, 100px); }
+    @media (min-width: 1001px) { .products { min-height: 100vh; padding: 104px 0 40px; display: flex; flex-direction: column; justify-content: center; } .products .sec-head { margin-bottom: 36px; } .products .h2 { font-size: clamp(36px, 4.2vw, 64px); } }
+    .hz { position: relative; }
+    .hz-track { display: flex; gap: 28px; padding: 0 var(--pad); width: max-content; will-change: transform; }
+    .pcard { position: relative; flex: 0 0 auto; width: min(64vw, 820px, calc((100vh - 440px) * 1.6)); }
+    .pcard .pm { position: relative; aspect-ratio: 16 / 10; border-radius: var(--r); overflow: hidden; background: var(--night-3); }
+    .pcard .pm video, .pcard .pm img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.08); transition: transform 1s cubic-bezier(.2,.8,.2,1); }
+    .pcard .pm img { object-position: top left; }
+    .pcard:hover .pm video, .pcard:hover .pm img { transform: scale(1.02); }
+    .pcard .pt { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; margin-top: 20px; }
+    .pcard h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(26px, 2.8vw, 44px); letter-spacing: -0.035em; line-height: 1.05; }
+    .pcard .tag { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--mist); white-space: nowrap; }
+    .pcard p { margin: 8px 0 0; color: var(--mist); max-width: 44ch; }
+    .hz-foot { display: flex; align-items: center; gap: 20px; margin-top: 32px; }
+    .hz-bar { flex: 1; height: 2px; background: rgba(255,255,255,.12); }
+    .hz-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--blue)); transform-origin: left; transform: scaleX(0); }
+    .hz-count { font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--mist); font-variant-numeric: tabular-nums; }
+
+    /* ---------- Testimonials ---------- */
+    .testi { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .tcard { display: flex; flex-direction: column; border-radius: var(--r); background: var(--paper-2); padding: 16px 16px 26px; }
+    .tcard .shot { display: block; width: 100%; padding: 0; border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 5; background: #e2e7f3; }
+    .tcard .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+    .tcard .shot:hover img { transform: scale(1.04); }
+    .tcard .meta { display: flex; justify-content: space-between; margin: 20px 8px 0; font-size: 13px; font-weight: 600; }
+    .tcard .stars { color: #ff9f0a; letter-spacing: 2px; }
+    .tcard .ver { color: var(--blue); }
+    .tcard h3 { margin: 10px 8px 0; font-family: var(--display); font-size: 22px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
+    .tcard p { margin: 10px 8px 0; font-size: 16px; line-height: 1.6; color: var(--ink-2); flex: 1; }
+    .tcard .role { display: flex; justify-content: space-between; margin: 18px 8px 0; padding-top: 14px; border-top: 1px solid rgba(11,16,48,.1); font-size: 13px; color: var(--ink-2); }
+    .tcard .role b { color: var(--ink); font-weight: 600; }
+
+    /* ---------- About ---------- */
+    .about { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 100px); align-items: center; }
+    .about blockquote { margin: 0; font-family: var(--display); font-size: clamp(26px, 2.7vw, 40px); line-height: 1.2; font-weight: 600; letter-spacing: -0.03em; }
+    .about .who { display: flex; align-items: center; gap: 14px; margin-top: 30px; }
+    .about .who b { display: block; font-size: 16px; }
+    .about .who span { font-size: 14px; color: var(--ink-2); }
+    .about .av { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(180deg, #0a1d8c, #0055e6); }
+    .about .av svg { width: 22px; }
+    .team { margin: 0; justify-self: end; width: 100%; }
+    .team .ph { border-radius: var(--r); overflow: hidden; background: var(--paper-2); }
+    .team img { width: 100%; height: auto; }
+    .team figcaption { margin-top: 14px; font-size: 14px; color: var(--ink-2); }
+    .team figcaption b { color: var(--ink); font-weight: 600; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: clamp(64px, 8vw, 110px); }
+    .stat { border-top: 1px solid rgba(11,16,48,.14); padding-top: 22px; }
+    .stat b { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(48px, 6vw, 96px); line-height: .95; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+    .stat b.word { font-size: clamp(32px, 3.6vw, 56px); line-height: 1; }
+    .stat > span { display: block; margin-top: 12px; font-size: 15px; color: var(--ink-2); max-width: 22ch; }
+
+    /* ---------- FAQ ---------- */
+    .faq { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr); gap: clamp(32px, 6vw, 100px); align-items: start; }
+    .faq details { border-top: 1px solid rgba(11,16,48,.14); }
+    .faq details:last-child { border-bottom: 1px solid rgba(11,16,48,.14); }
+    .faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px 0; cursor: pointer; font-family: var(--display); font-size: clamp(19px, 1.7vw, 24px); font-weight: 600; letter-spacing: -0.02em; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq .pm { position: relative; width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(11,16,48,.2); }
+    .faq .pm::before, .faq .pm::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; margin: -1px 0 0 -6px; background: var(--ink); transition: transform .35s ease; }
+    .faq .pm::after { transform: rotate(90deg); }
+    .faq details[open] .pm::after { transform: rotate(0deg); }
+    .faq .ans { padding: 0 56px 28px 0; font-size: 16px; line-height: 1.65; color: var(--ink-2); }
+
+    /* ---------- Closing / footer ---------- */
+    .closing { padding: clamp(110px, 14vw, 190px) 0 40px; }
+    .closing .big { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(48px, 10vw, 176px); line-height: .95; letter-spacing: -0.05em; }
+    .closing-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: end; margin-top: 48px; }
+    .closing-row p { margin: 0; max-width: 44ch; color: var(--mist); font-size: 18px; }
+    .magnet { position: relative; display: grid; place-items: center; width: clamp(150px, 15vw, 220px); aspect-ratio: 1; border-radius: 50%; background: linear-gradient(140deg, var(--cyan), var(--blue)); color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 18px; text-align: center; line-height: 1.15; will-change: transform; }
+    .magnet span { pointer-events: none; }
+    .foot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: clamp(72px, 9vw, 120px); padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); font-size: 14px; color: var(--mist); }
+    .foot a { color: #fff; }
+    .foot a:hover { color: var(--cyan); }
+    .foot .r { text-align: right; }
+    .foot .c { text-align: center; }
+
+    /* ---------- Cursor (desktop) ---------- */
+    .cur, .cur-ring { position: fixed; left: 0; top: 0; z-index: 300; pointer-events: none; border-radius: 50%; mix-blend-mode: difference; opacity: 0; transition: opacity .3s ease; }
+    .cursor-on .cur, .cursor-on .cur-ring { opacity: 1; }
+    .cur { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: #fff; }
+    .cur-ring { width: 44px; height: 44px; margin: -22px 0 0 -22px; box-shadow: inset 0 0 0 1px #fff; display: grid; place-items: center; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #fff; transition: width .35s ease, height .35s ease, margin .35s ease, background-color .35s ease; }
+    .cur-ring.big { width: 96px; height: 96px; margin: -48px 0 0 -48px; background: #fff; color: #000; }
+    .cur-ring.link { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
+    .cur, .cur-ring { display: none; }
+    @media (pointer: fine) and (prefers-reduced-motion: no-preference) { .has-cursor .cur, .has-cursor .cur-ring { display: grid; } }
+
+    /* ---------- Dialogs ---------- */
+    dialog { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); max-height: 92vh; overflow: visible; }
+    dialog::backdrop { background: rgba(7,11,31,.88); }
+    dialog img, dialog video { border-radius: 16px; max-height: 84vh; width: auto; max-width: 100%; margin: 0 auto; background: #000; }
+    #demo video { width: min(1100px, 94vw); aspect-ratio: 16 / 9; height: auto; }
+    .x { position: fixed; top: calc(16px + env(safe-area-inset-top, 0px)); right: 16px; width: 48px; height: 48px; border-radius: 50%; background: #fff; color: var(--ink); font-size: 22px; line-height: 1; }
+
+    /* ---------- Reveal ---------- */
+    .js [data-reveal] { opacity: 0; transform: translateY(36px); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1000px) {
+      .hdr nav { display: none; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr); }
+      .hero-film { width: 100%; max-width: 520px; aspect-ratio: 16 / 10; }
+      .card { grid-template-columns: minmax(0, 1fr); min-height: 0; top: calc(84px + var(--i) * 16px); }
+      .card ul { align-self: start; }
+      .testi { grid-template-columns: minmax(0, 1fr); max-width: 520px; }
+      .about, .faq { grid-template-columns: minmax(0, 1fr); }
+      .team { justify-self: stretch; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .closing-row { grid-template-columns: minmax(0, 1fr); }
+      .foot { grid-template-columns: minmax(0, 1fr); }
+      .foot .r, .foot .c { text-align: left; }
+      /* horizontal products: native swipe on touch screens */
+      .hz-track { width: auto; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px; }
+      .hz-track::-webkit-scrollbar { display: none; }
+      .pcard { width: 82vw; scroll-snap-align: start; }
+      .hz-foot { display: none; }
+      .im-box { clip-path: inset(30% 8% 30% 8% round 22px); }
+    }
+    @media (max-width: 600px) {
+      .hdr .talk { display: none; }
+      .hdr-in { height: 68px; }
+      .hero { padding-top: 120px; padding-bottom: 48px; }
+      .hero-side { flex-direction: column; }
+      .badge { width: 88px; height: 88px; }
+      .badge .core { inset: 20px; }
+      .hero-cta .btn { flex: 1 1 auto; justify-content: center; }
+      .card { padding: 28px 24px; }
+      .card li { font-size: 16px; }
+      .faq .ans { padding-right: 0; }
+      .im-cap { flex-direction: column; align-items: flex-start; gap: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pre { display: none; }
+      .js [data-reveal], .js .mask > span, .js .statement .big .w { opacity: 1; transform: none; }
+      .immersive { height: auto; }
+      .im-stage { position: relative; height: auto; aspect-ratio: 16 / 9; }
+      .im-box { clip-path: none; }
+      .im-cap { opacity: 1; }
+      .slot span, .blob, .badge svg.ring, .hero-glow { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== PRELOADER ===================== -->
+  <div class="pre" id="pre" aria-hidden="true">
+    <div class="pre-top"><span>Memuat</span><span>AI CRM untuk tim sales</span></div>
+    <div class="pre-word" id="preWord"><span>S</span><span>E</span><span>N</span><span>T</span><span>A</span><span>R</span><span>I</span><span>S</span></div>
+    <div class="pre-bottom">
+      <div class="odo" id="odo">
+        <div class="col" data-col="0"><span>0</span><span>1</span></div>
+        <div class="col" data-col="1"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+        <div class="col" data-col="2"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div>
+        <div class="pc">%</div>
+      </div>
+      <div class="pre-bar"><i id="preBar"></i></div>
+    </div>
+  </div>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="hdr" id="hdr">
+    <div class="hdr-in">
+      <a class="logo" href="#top" aria-label="SENTARIS, ke atas"><i aria-hidden="true"></i>SENTARIS</a>
+      <nav aria-label="Menu utama">
+        <a href="#layanan">Layanan</a>
+        <a href="#produk">Produk</a>
+        <a href="#testimoni">Testimoni</a>
+        <a href="#tentang">Tentang</a>
+      </nav>
+      <a class="talk wa" href="#">Mari bicara</a>
+      <button class="burger" type="button" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    </div>
+  </header>
+  <div class="menu" id="menu" aria-hidden="true">
+    <ol>
+      <li><a href="#layanan">Layanan</a></li>
+      <li><a href="#produk">Produk</a></li>
+      <li><a href="#testimoni">Testimoni</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+    <div class="menu-foot">
+      <a class="wa" href="#">WhatsApp +62 812-3133-3316</a>
+      <a href="https://playbook.sentaris.cloud" target="_blank" rel="noopener">playbook.sentaris.cloud</a>
+      <span>Jakarta <span data-clock>--:--</span> WIB</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="top">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="wrap">
+        <h1>
+          <span class="mask"><span>Nomor 1 AI CRM</span></span>
+          <span class="mask"><span><b class="grad">Content + Ads + Sales</b></span></span>
+          <span class="mask"><span>dalem 1 dashboard.</span></span>
+        </h1>
+        <div class="hero-grid">
+          <div class="hero-side" data-hero>
+            <div class="badge" aria-hidden="true">
+              <svg class="ring" viewBox="0 0 104 104"><defs><path id="circ" d="M52,52 m-41,0 a41,41 0 1,1 82,0 a41,41 0 1,1 -82,0"/></defs><text><textPath href="#circ">CRM + AI · untuk tim sales · </textPath></text></svg>
+              <span class="core"><svg viewBox="185 208 731 596"><polygon fill="#fff" points="185,804 463,208 638,208 916,804 771,804 550,315 330,804"/><polygon fill="#3de2ff" points="550,533 673,804 428,804"/></svg></span>
+            </div>
+            <div>
+              <p><b>Bukan CRM biasa. Bukan spreadsheet.</b>Siapkah tim sales Anda membalas, membagi, dan mencatat setiap lead dalam hitungan detik?</p>
+              <div class="hero-cta">
+                <a class="btn light wa" href="#">Coba Gratis 5 Hari <span class="ar" aria-hidden="true">→</span></a>
+                <a class="btn line" href="https://playbook.sentaris.cloud" target="_blank" rel="noopener">Lihat demo</a>
+              </div>
+            </div>
+          </div>
+          <div class="hero-film" data-hero data-cursor="Putar">
+            <video data-src="SENTARIS%20LAUNCH.mp4" muted loop playsinline preload="none" aria-label="Cuplikan film SENTARIS"></video>
+            <span>Film peluncuran</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== IMMERSIVE SCALE VIDEO ===================== -->
+    <section class="immersive" id="film" aria-label="Film SENTARIS">
+      <div class="im-stage">
+        <div class="im-box" id="imBox"><video data-src="SENTARIS%20LAUNCH.mp4" muted loop playsinline preload="none" aria-label="Film peluncuran SENTARIS"></video></div>
+        <div class="im-cap" id="imCap">
+          <h2>Satu layar untuk chat, iklan, dan lead.</h2>
+          <button class="btn light" type="button" data-open-demo>Tonton dengan suara <span class="ar" aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WORD ROTATOR ===================== -->
+    <section class="rot" aria-label="Apa yang SENTARIS kerjakan">
+      <div class="wrap">
+        <p><span class="muted">Kami bantu</span><br />
+          <span class="slot" aria-hidden="true"><span>membalas</span><span>membagi</span><span>mencatat</span><span>membalas</span></span><span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">membalas, membagi, dan mencatat</span><br />
+          <span class="muted">setiap lead Anda.</span></p>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICES (stacking cards on a white sheet) ===================== -->
+    <section class="sheet" id="layanan" aria-labelledby="svc-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow" data-reveal>Layanan</p>
+            <h2 class="h2" id="svc-title" data-reveal>Tiga hal yang tidak diberikan CRM lain. <span class="dim">Ditambah satu.</span></h2>
+          </div>
+          <p class="lede" data-reveal>Bukan daftar fitur panjang. Yang langsung terasa di minggu pertama.</p>
+        </div>
+        <div class="cards">
+          <article class="card" style="--i:0">
+            <span class="n">01</span>
+            <div><h3>Nomor WhatsApp tanpa batas</h3><p>Tambah berapa pun nomor sales — 5 atau 50 — semuanya masuk satu dasbor. Sales tetap pakai WhatsApp di HP seperti biasa.</p></div>
+            <ul><li>5 atau 50 nomor, satu dasbor</li><li>Sales tetap pakai HP</li><li><b>Leader melihat semuanya</b></li></ul>
+          </article>
+          <article class="card" style="--i:1">
+            <span class="n">02</span>
+            <div><h3>ADS Dashboard di dalam CRM</h3><p>Tahu iklan Meta mana yang jadi chat, lead, dan closing — tanpa membuka Ads Manager.</p></div>
+            <ul><li>Skor iklan 1–10 dari chat masuk</li><li>ROAS asli &amp; biaya per chat</li><li><b>Sales mana yang closing</b></li></ul>
+          </article>
+          <article class="card" style="--i:2">
+            <span class="n">03</span>
+            <div><h3>Mobile friendly</h3><p>Dasbor penuh di HP: balas chat, pindah tahap lead, lihat skor iklan. Owner bisa memantau dari mana saja — tanpa laptop.</p></div>
+            <ul><li>iPhone &amp; Android</li><li>Notifikasi push</li><li><b>Pantau dari mana saja</b></li></ul>
+          </article>
+          <article class="card" style="--i:3">
+            <span class="n">04</span>
+            <div><h3>Horus AI 24 jam</h3><p>Membalas lead dalam hitungan detik, siang maupun malam. Paginya tim tinggal melanjutkan chat.</p></div>
+            <ul><li>Lima gaya persona</li><li>Sopan, sesuai gaya bisnis Anda</li><li><b>Tidak mengarang harga</b></li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STATEMENT + BLOB ===================== -->
+    <section class="night statement" aria-label="Pernyataan">
+      <div class="blob-wrap" aria-hidden="true"><div class="blob"></div></div>
+      <div class="wrap">
+        <p class="big" id="statement"><b>Setiap lead</b> dibalas, dibagi, dan dicatat — dari iklan pertama sampai closing, dalam satu layar.</p>
+      </div>
+    </section>
+
+    <!-- ===================== PRODUCTS: liquid horizontal scroll ===================== -->
+    <section class="night products" id="produk" aria-labelledby="prod-title">
+      <div class="wrap sec-head">
+        <div>
+          <p class="eyebrow" data-reveal>Produk</p>
+          <h2 class="h2" id="prod-title" data-reveal>Lihat SENTARIS bekerja. <span class="dim">Geser terus.</span></h2>
+        </div>
+      </div>
+      <div class="hz" id="hz">
+        <div class="hz-track" id="hzTrack">
+          <article class="pcard" data-cursor="Lihat">
+            <div class="pm"><video data-src="2_unlimited_numbers.mp4" muted loop playsinline preload="none" aria-label="Video: multi-nomor"></video></div>
+            <div class="pt"><h3>Multi-Nomor Sales</h3><span class="tag">01 · Video</span></div>
+            <p>50+ nomor aktif di satu dasbor hari ini.</p>
+          </article>
+          <article class="pcard" data-cursor="Lihat">
+            <div class="pm"><video data-src="1_ads_dashboard.mp4" muted loop playsinline preload="none" aria-label="Video: ADS Dashboard"></video></div>
+            <div class="pt"><h3>ADS Dashboard</h3><span class="tag">02 · Video</span></div>
+            <p>Belanja iklan ↔ chat masuk, satu layar.</p>
+          </article>
+          <article class="pcard" data-cursor="Lihat">
+            <div class="pm"><video data-src="3_mobile_friendly.mp4" muted loop playsinline preload="none" aria-label="Video: mobile"></video></div>
+            <div class="pt"><h3>Mobile</h3><span class="tag">03 · Video</span></div>
+            <p>iPhone &amp; Android · notifikasi push.</p>
+          </article>
+          <article class="pcard" data-cursor="Buka" data-lightbox="fitur2.jpg">
+            <div class="pm"><img src="fitur2.jpg" alt="Horus AI 24 jam" width="1200" height="700" loading="lazy" decoding="async" /></div>
+            <div class="pt"><h3>Horus AI</h3><span class="tag">04 · Dasbor</span></div>
+            <p>Lima gaya persona. Balas ramah tanpa ngawur harga.</p>
+          </article>
+          <article class="pcard" data-cursor="Buka" data-lightbox="fitur1.jpg">
+            <div class="pm"><img src="fitur1.jpg" alt="Pipeline Kanban" width="1200" height="700" loading="lazy" decoding="async" /></div>
+            <div class="pt"><h3>Kanban Pipeline</h3><span class="tag">05 · Dasbor</span></div>
+            <p>Geser lead dari Hot Leads sampai Sudah Beli.</p>
+          </article>
+          <article class="pcard" data-cursor="Buka" data-lightbox="fitur3.jpg">
+            <div class="pm"><img src="fitur3.jpg" alt="Auto Follow-up" width="1200" height="700" loading="lazy" decoding="async" /></div>
+            <div class="pt"><h3>Auto Follow-up</h3><span class="tag">06 · Dasbor</span></div>
+            <p>Berhenti otomatis saat calon pelanggan membalas.</p>
+          </article>
+          <article class="pcard" data-cursor="Buka" data-lightbox="fitur4.jpg">
+            <div class="pm"><img src="fitur4.jpg" alt="ADS Dashboard: belanja iklan vs chat masuk" width="1200" height="700" loading="lazy" decoding="async" /></div>
+            <div class="pt"><h3>Rekap Iklan</h3><span class="tag">07 · Dasbor</span></div>
+            <p>ROAS asli, biaya per chat terverifikasi, omzet.</p>
+          </article>
+          <article class="pcard" data-cursor="Buka" data-lightbox="fitur5.jpg">
+            <div class="pm"><img src="fitur5.jpg" alt="Papan pantau nomor sales" width="1200" height="700" loading="lazy" decoding="async" /></div>
+            <div class="pt"><h3>Papan Pantau</h3><span class="tag">08 · Dasbor</span></div>
+            <p>Tandai chat yang belum dibalas lebih dari 15–30 menit.</p>
+          </article>
+        </div>
+        <div class="wrap hz-foot" aria-hidden="true"><div class="hz-bar"><i id="hzBar"></i></div><span class="hz-count" id="hzCount">01 / 08</span></div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS + ABOUT + FAQ (white sheet) ===================== -->
+    <section class="sheet" id="testimoni" aria-labelledby="t-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <p class="eyebrow" data-reveal>Testimoni riil klien</p>
+            <h2 class="h2" id="t-title" data-reveal>Bukti nyata dari pemilik bisnis <span class="dim">&amp; tim sales.</span></h2>
+          </div>
+          <p class="lede" data-reveal>Tangkapan layar percakapan asli dari WhatsApp klien aktif SENTARIS. Klik foto untuk melihat chat lengkap.</p>
+        </div>
+        <div class="testi">
+          <article class="tcard" data-reveal>
+            <button class="shot" type="button" data-lightbox="WhatsApp2.jpg" data-cursor="Buka" aria-label="Lihat chat lengkap: Tracking Iklan Meta s/d Closing"><img src="WhatsApp2.jpg" alt="" loading="lazy" decoding="async" /></button>
+            <div class="meta"><span class="stars" aria-label="5 dari 5 bintang">★★★★★</span><span class="ver">Terverifikasi</span></div>
+            <h3>Tracking Iklan Meta s/d Closing</h3>
+            <p>“Dulu saya cuma tahu total belanja iklan. Sekarang tiap pagi kelihatan iklan mana yang jadi chat dan sales siapa yang closing! Tim 12 sales saya jadi makin produktif dan ga ada lead kelewatan lagi.”</p>
+            <div class="role"><b>Showroom Owner</b><span>12 Sales Team</span></div>
+          </article>
+          <article class="tcard" data-reveal>
+            <button class="shot" type="button" data-lightbox="WhatsApp3.jpg" data-cursor="Buka" aria-label="Lihat chat lengkap: Lead Auto-Transfer & Anti Nganggur"><img src="WhatsApp3.jpg" alt="" loading="lazy" decoding="async" /></button>
+            <div class="meta"><span class="stars" aria-label="5 dari 5 bintang">★★★★★</span><span class="ver">Terverifikasi</span></div>
+            <h3>Lead Auto-Transfer &amp; Anti Nganggur</h3>
+            <p>“Lead yang didiamkan 5 menit otomatis langsung pindah ke sales lain. Tidak ada lagi lead nganggur di HP orang yang lagi cuti. Tim 9 sales saya makin rapi kerjanya.”</p>
+            <div class="role"><b>Sales Manager</b><span>9 Sales Team</span></div>
+          </article>
+          <article class="tcard" data-reveal>
+            <button class="shot" type="button" data-lightbox="WhatsApp1.jpg" data-cursor="Buka" aria-label="Lihat chat lengkap: Horus AI 24 Jam"><img src="WhatsApp1.jpg" alt="" loading="lazy" decoding="async" /></button>
+            <div class="meta"><span class="stars" aria-label="5 dari 5 bintang">★★★★★</span><span class="ver">Terverifikasi</span></div>
+            <h3>Horus AI 24 Jam</h3>
+            <p>“Horus AI membalas tengah malam dengan bahasa yang sopan dan tidak mengarang harga sama sekali! Paginya tim saya tinggal melanjutkan chat aja. Kebantu banget buat 5 nomor CS kami.”</p>
+            <div class="role"><b>Owner Klinik</b><span>5 Nomor CS</span></div>
+          </article>
+        </div>
+
+        <!-- About -->
+        <div class="about" id="tentang" style="margin-top:clamp(110px,14vw,190px)">
+          <div>
+            <p class="eyebrow" data-reveal>Tentang kami</p>
+            <blockquote data-reveal>“SENTARIS lahir karena tim sales kami tumbuh sampai 60 orang dan tidak ada CRM yang sanggup mengikuti WhatsApp kami. Sekarang setiap chat, iklan, dan lead ada di satu layar — dan saya bisa memantaunya dari HP.”</blockquote>
+            <div class="who" data-reveal>
+              <span class="av" aria-hidden="true"><svg viewBox="185 208 731 596"><polygon fill="#fff" points="185,804 463,208 638,208 916,804 771,804 550,315 330,804"/><polygon fill="#3de2ff" points="550,533 673,804 428,804"/></svg></span>
+              <div><b>Jefferson Noah</b><span>Founder SENTARIS · Digital Marketing Specialist</span></div>
+            </div>
+          </div>
+          <figure class="team" data-reveal>
+            <div class="ph"><img src="tim.jpg" alt="Tim Sales dan Operasional SENTARIS" loading="lazy" decoding="async" /></div>
+            <figcaption><b>Tim Sales &amp; Operasional SENTARIS.</b> 60 salesperson memakai CRM ini setiap hari.</figcaption>
+          </figure>
+        </div>
+        <div class="stats">
+          <div class="stat" data-reveal><b><span data-count="60">60</span></b><span>salesperson di tim kami</span></div>
+          <div class="stat" data-reveal><b><span data-count="50">50</span>+</b><span>nomor WhatsApp dalam satu dasbor</span></div>
+          <div class="stat" data-reveal><b><span data-count="5000">5.000</span>+</b><span>chat dari iklan per bulan</span></div>
+          <div class="stat" data-reveal><b class="word">Hari yang sama</b><span>onboarding room baru</span></div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq" id="faq" style="margin-top:clamp(110px,14vw,190px)">
+          <div>
+            <p class="eyebrow" data-reveal>FAQ</p>
+            <h2 class="h2" data-reveal>Sebelum Anda <span class="dim">chat kami.</span></h2>
+          </div>
+          <div data-reveal>
+            <details open><summary>Apakah perlu WhatsApp Business API?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Tidak. Nomor sales dihubungkan lewat scan QR (perangkat tertaut) dan tetap dipakai di HP seperti biasa — tanpa biaya per pesan, tanpa mengubah cara kerja sales.</div></details>
+            <details><summary>Berapa nomor yang bisa dihubungkan?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Tanpa batas. SENTARIS hari ini menjalankan 50+ nomor sales dalam satu dasbor, dengan status koneksi tiap nomor terpantau.</div></details>
+            <details><summary>Bagaimana dengan keamanan data?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Setiap bisnis mendapat room &amp; database sendiri. Token iklan Meta disimpan terenkripsi, dan audit log mencatat siapa membuka percakapan siapa. Peran admin, leader, sales, dan tamu punya cakupan data yang berbeda.</div></details>
+            <details><summary>Berapa lama onboarding?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Hari yang sama: room dibuat, nomor sales di-scan, tim langsung bekerja. Nomor bisa ditambah bertahap.</div></details>
+            <details><summary>Bisa dipakai di HP?<span class="pm" aria-hidden="true"></span></summary><div class="ans">Ya. Dasbor penuh di iPhone &amp; Android — balas chat, pindah tahap lead, terima notifikasi push — tanpa laptop.</div></details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== CLOSING + FOOTER ===================== -->
+  <footer class="night closing" id="coba">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Coba gratis 5 hari</p>
+      <h2 class="big" data-reveal>Mari mulai<br /><span class="grad">hari ini.</span></h2>
+      <div class="closing-row">
+        <p data-reveal>Kami pasang room untuk tim Anda, Anda scan QR nomor sales, chat pertama masuk hari itu juga. Lalu langganan bulanan per room — berhenti kapan saja, data tetap milik Anda.</p>
+        <a class="magnet wa" href="#" id="magnet" data-cursor="Chat"><span>Coba Gratis<br />5 Hari →</span></a>
+      </div>
+      <div class="foot">
+        <span>© 2026 SENTARIS. All rights reserved.</span>
+        <span class="c"><a class="wa" href="#">WhatsApp</a> · <a href="https://playbook.sentaris.cloud/" target="_blank" rel="noopener">Demo playbook</a></span>
+        <span class="r">Waktu Jakarta: <span data-clock>--:--</span> WIB</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cur" id="cur" aria-hidden="true"></div>
+  <div class="cur-ring" id="curRing" aria-hidden="true"></div>
+  <dialog id="demo" aria-label="Film demo SENTARIS"><button class="x" type="button" data-close aria-label="Tutup">×</button><video controls playsinline preload="none"></video></dialog>
+  <dialog id="lightbox" aria-label="Gambar"><button class="x" type="button" data-close aria-label="Tutup">×</button><img alt="" /></dialog>
+
+  <!-- Libraries (pinned versions) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    var $ = function (s, r) { return (r || document).querySelector(s); };
+    var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+    var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var fine = matchMedia("(pointer: fine)").matches;
+    var desktop = matchMedia("(min-width: 1001px)").matches;
+
+    /* ---------- WhatsApp links (edit here) ---------- */
+    var WA = "https://wa.me/6281231333316?text=" + encodeURIComponent("Halo SENTARIS, saya mau Coba Gratis 5 Hari");
+    $$(".wa").forEach(function (a) { a.href = WA; a.target = "_blank"; a.rel = "noopener"; });
+
+    /* ---------- Jakarta clock ---------- */
+    var fmt = new Intl.DateTimeFormat("id-ID", { timeZone: "Asia/Jakarta", hour: "2-digit", minute: "2-digit", hour12: false });
+    var clock = function () { var t = fmt.format(new Date()).replace(".", ":"); $$("[data-clock]").forEach(function (c) { c.textContent = t; }); };
+    clock(); setInterval(clock, 15000);
+
+    /* ---------- Fullscreen menu ---------- */
+    var burger = $("#burger"), menu = $("#menu");
+    var setMenu = function (open) {
+      document.body.classList.toggle("menu-open", open); document.body.classList.toggle("locked", open);
+      burger.setAttribute("aria-expanded", open); burger.setAttribute("aria-label", open ? "Tutup menu" : "Buka menu"); menu.setAttribute("aria-hidden", !open);
+      if (window.__lenis) open ? window.__lenis.stop() : window.__lenis.start();
+    };
+    burger.addEventListener("click", function () { setMenu(!document.body.classList.contains("menu-open")); });
+    $$("#menu a").forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+
+    /* ---------- Videos: load + play only while visible ---------- */
+    var vio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { if (!v.getAttribute("src")) v.src = v.dataset.src; if (!reduce) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
+        else if (!v.paused) v.pause();
+      });
+    }, { threshold: 0.2 });
+    $$("video[data-src]").forEach(function (v) { vio.observe(v); });
+
+    /* ---------- Dialogs ---------- */
+    var demo = $("#demo"), dv = $("video", demo), lb = $("#lightbox"), lbi = $("img", lb);
+    var openDemo = function () { if (!dv.getAttribute("src")) dv.src = "SENTARIS%20LAUNCH.mp4"; demo.showModal(); var p = dv.play(); if (p && p.catch) p.catch(function () {}); };
+    $$("[data-open-demo]").forEach(function (b) { b.addEventListener("click", openDemo); });
+    $(".hero-film").addEventListener("click", openDemo);
+    $$("[data-lightbox]").forEach(function (b) { b.addEventListener("click", function () { lbi.src = b.dataset.lightbox; lb.showModal(); }); });
+    $$("dialog").forEach(function (d) {
+      d.addEventListener("click", function (e) { if (e.target === d || e.target.hasAttribute("data-close")) d.close(); });
+      d.addEventListener("close", function () { var v = $("video", d); if (v) v.pause(); });
+    });
+
+    /* ---------- Team photo: never wider than its real pixels ---------- */
+    var timg = $(".team img");
+    if (timg) { var fit = function () { if (timg.naturalWidth) $(".team").style.maxWidth = timg.naturalWidth + "px"; }; timg.complete ? fit() : timg.addEventListener("load", fit); }
+
+    /* ---------- Statement: wrap words ---------- */
+    var st = $("#statement");
+    (function wrapWords(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var f = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (p) {
+            if (!p) return;
+            if (/^\s+$/.test(p)) { f.appendChild(document.createTextNode(" ")); return; }
+            var s = document.createElement("span"); s.className = "w"; s.textContent = p; f.appendChild(s);
+          });
+          n.replaceWith(f);
+        } else if (n.nodeType === 1) wrapWords(n);
+      });
+    })(st);
+
+    /* ---------- No GSAP or reduced motion: show everything ---------- */
+    var pre = $("#pre");
+    if (!window.gsap || !window.ScrollTrigger || reduce) {
+      pre.remove(); document.documentElement.classList.remove("js");
+      return;
+    }
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* ---------- Smooth scroll (desktop) ---------- */
+    if (window.Lenis && fine) {
+      var lenis = new Lenis({ lerp: 0.09 });
+      window.__lenis = lenis;
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+      gsap.ticker.lagSmoothing(0);
+      $$('a[href^="#"]').forEach(function (a) { a.addEventListener("click", function (e) {
+        var id = a.getAttribute("href"); if (id.length < 2 || !$(id)) return;
+        e.preventDefault(); lenis.scrollTo(id, { offset: id === "#top" ? 0 : -20, duration: 1.4 });
+      }); });
+    }
+
+    /* ---------- Custom cursor (mouse only) ---------- */
+    if (fine) {
+      document.documentElement.classList.add("has-cursor");
+      var cur = $("#cur"), ring = $("#curRing");
+      var cx = gsap.quickTo(cur, "x", { duration: 0.08 }), cy = gsap.quickTo(cur, "y", { duration: 0.08 });
+      var rx = gsap.quickTo(ring, "x", { duration: 0.45, ease: "power3" }), ry = gsap.quickTo(ring, "y", { duration: 0.45, ease: "power3" });
+      addEventListener("mousemove", function (e) { cx(e.clientX); cy(e.clientY); rx(e.clientX); ry(e.clientY); document.documentElement.classList.add("cursor-on"); }, { passive: true });
+      document.addEventListener("mouseleave", function () { document.documentElement.classList.remove("cursor-on"); });
+      document.addEventListener("mouseover", function (e) {
+        var lab = e.target.closest("[data-cursor]"), lnk = e.target.closest("a, button, summary");
+        ring.classList.toggle("big", !!lab); ring.textContent = lab ? lab.dataset.cursor : "";
+        ring.classList.toggle("link", !lab && !!lnk);
+      });
+    }
+
+    /* ---------- Preloader: odometer counter → letters → curtain ---------- */
+    var cols = $$("#odo .col");
+    var setOdo = function (n) {
+      var h = n >= 100 ? 1 : 0, t = n >= 100 ? 0 : Math.floor(n / 10), o = n >= 100 ? 0 : n % 10;
+      cols[0].style.transform = "translateY(" + (-h) + "em)";
+      cols[1].style.transform = "translateY(" + (-t) + "em)";
+      cols[2].style.transform = "translateY(" + (-o) + "em)";
+    };
+    cols[0].style.opacity = 0;
+    var counter = { v: 0 };
+    var heroIn = function () {
+      gsap.to(".hero .mask > span", { y: 0, duration: 1.2, ease: "expo.out", stagger: 0.1 });
+      gsap.fromTo("[data-hero]", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.12, delay: 0.25 });
+    };
+    gsap.timeline()
+      .to(counter, { v: 100, duration: 1.6, ease: "power2.inOut", onUpdate: function () {
+        var n = Math.round(counter.v); setOdo(n); if (n >= 100) cols[0].style.opacity = 1;
+        $("#preBar").style.transform = "scaleX(" + (counter.v / 100).toFixed(3) + ")";
+      } })
+      .to("#preWord span", { y: 0, duration: 0.9, ease: "expo.out", stagger: 0.05 }, 0.25)
+      .to("#preWord span", { y: "-110%", duration: 0.6, ease: "expo.in", stagger: 0.03 }, 1.75)
+      .to(pre, { yPercent: -100, duration: 0.9, ease: "expo.inOut", onComplete: function () { pre.remove(); } }, 2.15)
+      .add(heroIn, 2.45);
+
+    /* ---------- Immersive scale: the film opens to full screen ---------- */
+    var imFrom = desktop ? "inset(22% 30% 22% 30% round 28px)" : "inset(30% 8% 30% 8% round 22px)";
+    gsap.timeline({ scrollTrigger: { trigger: "#film", start: "top top", end: "bottom bottom", scrub: 0.6 } })
+      .fromTo("#imBox", { clipPath: imFrom }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "power2.inOut", duration: 1 })
+      .to("#imCap", { opacity: 1, duration: 0.3 }, 0.75);
+
+    /* ---------- Hero content drifts back as the film takes over ---------- */
+    gsap.to(".hero .wrap", { yPercent: -18, opacity: 0.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+
+    /* ---------- Products: pinned, liquid horizontal scroll (desktop) ---------- */
+    if (desktop) {
+      var track = $("#hzTrack"), cards = $$(".pcard", track), bar = $("#hzBar"), count = $("#hzCount");
+      var dist = function () { return track.scrollWidth - window.innerWidth; };
+      var skew = gsap.quickTo(track, "skewX", { duration: 0.6, ease: "power3" });
+      var tween = gsap.to(track, {
+        x: function () { return -dist(); }, ease: "none",
+        scrollTrigger: {
+          trigger: "#produk", start: "top top", end: function () { return "+=" + dist(); },
+          pin: "#produk", scrub: 0.8, invalidateOnRefresh: true, anticipatePin: 1,
+          onUpdate: function (self) {
+            skew(gsap.utils.clamp(-7, 7, self.getVelocity() / -350));       /* the "liquid" lean while moving */
+            bar.style.transform = "scaleX(" + self.progress.toFixed(4) + ")";
+            var n = Math.min(cards.length, Math.round(self.progress * (cards.length - 1)) + 1);
+            count.textContent = (n < 10 ? "0" : "") + n + " / 0" + cards.length;
+          }
+        }
+      });
+      ScrollTrigger.addEventListener("scrollEnd", function () { skew(0); });
+      cards.forEach(function (c) {
+        gsap.fromTo($(".pm > *", c), { xPercent: -6 }, { xPercent: 6, ease: "none",
+          scrollTrigger: { trigger: c, containerAnimation: tween, start: "left right", end: "right left", scrub: true } });
+      });
+    }
+
+    /* ---------- Services: each card shrinks as the next one stacks on top ---------- */
+    var svc = $$(".card");
+    svc.forEach(function (c, i) {
+      var next = svc[i + 1]; if (!next) return;
+      gsap.to(c, { scale: 0.92, opacity: 0.55, ease: "none",
+        scrollTrigger: { trigger: next, start: "top bottom", end: "top " + (desktop ? 120 : 100) + "px", scrub: true } });
+    });
+
+    /* ---------- Statement lights up word by word ---------- */
+    gsap.to("#statement .w", { opacity: 1, stagger: 0.1, ease: "none", scrollTrigger: { trigger: "#statement", start: "top 80%", end: "bottom 45%", scrub: true } });
+    gsap.fromTo(".blob-wrap", { scale: 0.7 }, { scale: 1.15, ease: "none", scrollTrigger: { trigger: ".statement", start: "top bottom", end: "bottom top", scrub: true } });
+
+    /* ---------- Reveals (one trigger each; never left hidden after a jump) ---------- */
+    var sib = new Map();
+    $$("[data-reveal]").forEach(function (e) {
+      var n = sib.get(e.parentElement) || 0; sib.set(e.parentElement, n + 1);
+      gsap.to(e, { opacity: 1, y: 0, duration: 1, ease: "expo.out", delay: Math.min(n, 5) * 0.08,
+        scrollTrigger: { trigger: e, start: "top 90%", toggleActions: "play play play none" } });
+    });
+
+    /* ---------- Count-up ---------- */
+    $$("[data-count]").forEach(function (e) {
+      var end = +e.dataset.count, o = { v: 0 }; e.textContent = "0";
+      ScrollTrigger.create({ trigger: e, start: "top 92%", once: true, onEnter: function () {
+        gsap.to(o, { v: end, duration: 1.8, ease: "expo.out", onUpdate: function () { e.textContent = Math.round(o.v).toLocaleString("id-ID"); } });
+      } });
+    });
+
+    /* ---------- Magnetic CTA ---------- */
+    var mag = $("#magnet");
+    if (mag && fine) {
+      var mx = gsap.quickTo(mag, "x", { duration: 0.6, ease: "elastic.out(1, .4)" }), my = gsap.quickTo(mag, "y", { duration: 0.6, ease: "elastic.out(1, .4)" });
+      mag.addEventListener("mousemove", function (e) { var r = mag.getBoundingClientRect(); mx((e.clientX - r.left - r.width / 2) * 0.35); my((e.clientY - r.top - r.height / 2) * 0.35); });
+      mag.addEventListener("mouseleave", function () { mx(0); my(0); });
+    }
+
+    addEventListener("load", function () { ScrollTrigger.refresh(); });
+  })();
+  </script>
+</body>
+</html>
