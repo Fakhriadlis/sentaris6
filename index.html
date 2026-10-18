@@ -398,6 +398,142 @@
       .pre-word { font-size: clamp(48px, 17vw, 96px); }
       .odo { font-size: clamp(56px, 16vw, 96px); }
     }
+    /* =====================================================================
+       PHONE SYSTEM (≤600px) — one place for mobile type, spacing and layout.
+       Smaller type scale, tighter rhythm, simple vertical scrolling.
+       ===================================================================== */
+    @media (max-width: 600px) {
+      :root { --pad: 20px; --r: 22px; }
+      body { font-size: 16px; line-height: 1.55; }
+
+      /* header */
+      .hdr-in { height: 60px; }
+      .logo { font-size: 17px; }
+      .burger { width: 40px; height: 40px; }
+
+      /* buttons & chips */
+      .btn { min-height: 48px; padding: 12px 20px; font-size: 15px; }
+      .chip { font-size: 12.5px; padding: 7px 11px; gap: 6px; }
+      .chip svg { width: 14px; height: 14px; }
+      .eyebrow { font-size: 11px; letter-spacing: .14em; margin-bottom: 12px; }
+
+      /* hero: ends right after its content so the film peeks in below */
+      .hero { min-height: 0; padding: 100px 0 36px; justify-content: flex-start; }
+      .hero h1 { font-size: clamp(28px, 8.2vw, 36px); line-height: 1.06; letter-spacing: -0.04em; }
+      .hero-grid { margin-top: 26px; gap: 0; }
+      /* badge + one bold line side by side, buttons and chips full width below */
+      .hero-side { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; column-gap: 14px; max-width: none; }
+      .hero-side > div:last-child { display: contents; }
+      .hero-cta, .hero-chips { grid-column: 1 / -1; }
+      .badge { width: 64px; height: 64px; }
+      .badge .core { inset: 15px; }
+      .badge .core svg { width: 18px; }
+      .badge svg.ring text { font-size: 10px; }
+      .hero-side p b { font-size: 17px; line-height: 1.25; margin: 0; }
+      .hero-cta { margin-top: 20px; gap: 10px; }
+      .hero-cta .btn { flex: 1 1 auto; padding: 12px 16px; }
+      .hero-cta .btn.light { flex-grow: 1.6; }
+      .hero-chips { margin-top: 14px; gap: 6px; }
+      .hero-chips .chip { font-size: 12px; padding: 6px 10px; }
+
+      /* film block */
+      .immersive { padding: 8px 0 56px; }
+      .im-cap { padding-top: 20px; gap: 14px; }
+      .im-cap h2 { font-size: clamp(22px, 6.4vw, 26px); max-width: none; }
+      .im-hint { font-size: 12px; }
+
+      /* rotator */
+      .rot { padding: 56px 0 64px; }
+      .rot p { font-size: clamp(30px, 8.6vw, 38px); line-height: 1.08; }
+
+      /* white sheets + section heads */
+      .sheet { padding: 56px 0 64px; border-radius: 24px 24px 0 0; }
+      .sec-head { margin-bottom: 28px; gap: 12px; }
+      .h2 { font-size: clamp(26px, 7.2vw, 32px); line-height: 1.08; letter-spacing: -0.035em; }
+      .lede { font-size: 15px; }
+
+      /* services: a calm vertical list (no stacking on phones) */
+      .cards { gap: 14px; }
+      .card { position: relative; top: auto; gap: 16px; padding: 18px 16px 16px; border-radius: 20px; }
+      .card .n { font-size: 14px; }
+      .card h3 { font-size: 22px; margin-top: 6px; line-height: 1.12; }
+      .chips { margin-top: 12px; gap: 6px; }
+      .cmedia { border-radius: 14px; }
+
+      /* ticker + statement */
+      .ticker { padding: 16px 0; }
+      .tk-track span { font-size: 17px; gap: 10px; padding: 0 18px; }
+      .tk-track span svg { width: 18px; }
+      .statement { padding: 72px 0; }
+      .statement .big { font-size: clamp(24px, 6.8vw, 30px); line-height: 1.12; }
+
+      /* products */
+      .products { padding: 56px 0 44px; }
+      .pcard { width: 80vw; }
+      .pcard .pm { border-radius: 16px; }
+      .pcard .pt { margin-top: 12px; gap: 10px; }
+      .pcard h3 { font-size: 19px; }
+      .pcard .tag { font-size: 11px; }
+      .hz-foot { margin-top: 18px; }
+      .swipe-hint { font-size: 12px; margin-top: 12px; }
+
+      /* testimonials */
+      .testi > .tcard { flex-basis: 78%; }
+      .tcard { padding: 12px 12px 18px; border-radius: 20px; }
+      .tcard .shot { border-radius: 14px; aspect-ratio: 3 / 4; }
+      .tcard .meta { margin: 14px 6px 0; font-size: 12px; }
+      .tcard .tk-l { margin: 10px 6px 0; font-size: 10.5px; }
+      .tcard h3 { margin: 6px 6px 0; font-size: 18px; line-height: 1.2; }
+      .tcard .role { margin: 14px 6px 0; padding-top: 12px; font-size: 12px; }
+
+      /* about + stats */
+      #tentang { margin-top: 72px !important; }
+      .about { gap: 28px; }
+      .about blockquote { font-size: 20px; line-height: 1.3; letter-spacing: -0.02em; }
+      .about .who { margin-top: 18px; gap: 12px; }
+      .about .av { width: 40px; height: 40px; }
+      .about .who b { font-size: 15px; }
+      .about .who span { font-size: 13px; }
+      .team figcaption { font-size: 13px; }
+      .stats { margin-top: 44px; gap: 22px 16px; }
+      .stat { padding-top: 14px; }
+      .stat b { font-size: clamp(32px, 9vw, 38px); }
+      .stat b.word { font-size: 22px; line-height: 1.1; }
+      .stat > span { font-size: 13px; margin-top: 8px; }
+
+      /* faq */
+      #faq { margin-top: 72px !important; gap: 20px; }
+      .faq summary { font-size: 16px; padding: 18px 0; gap: 14px; }
+      .faq .pm { width: 30px; height: 30px; }
+      .faq .ans { font-size: 15px; padding-bottom: 20px; }
+
+      /* closing */
+      .closing { padding: 72px 0 calc(112px + env(safe-area-inset-bottom, 0px)); }
+      .closing .big { font-size: clamp(38px, 11.5vw, 48px); line-height: 1; }
+      .closing-row { margin-top: 28px; gap: 22px; }
+      .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+      .steps li { flex-direction: column; justify-content: flex-start; text-align: center; gap: 8px; font-size: 13px; line-height: 1.25; padding: 14px 6px; border-radius: 16px; background: rgba(255,255,255,.04); box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
+      .steps .si { width: 40px; height: 40px; border-radius: 12px; }
+      .steps .si svg { width: 20px; height: 20px; }
+      .closing-fine { font-size: 12.5px; margin-top: 14px; }
+      .magnet { min-height: 54px; font-size: 16px; }
+      .foot { margin-top: 48px; font-size: 13px; }
+
+      /* menu + preloader */
+      .menu { padding: 96px var(--pad) 32px; }
+      .menu li a { font-size: clamp(30px, 9vw, 40px); gap: 14px; }
+      .menu-cta { margin-bottom: 22px; }
+      .menu-foot { font-size: 13px; }
+      .odo { font-size: clamp(48px, 14vw, 72px); }
+      .pre-word { font-size: clamp(44px, 15vw, 72px); }
+
+      /* very narrow phones: stack the two hero buttons */
+      @media (max-width: 380px) { .hero-cta { flex-direction: column; } .hero-cta .btn { width: 100%; } }
+
+      /* reveals travel less on a small screen */
+      .js [data-reveal] { transform: translateY(20px); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .pre { display: none; }
       .js [data-reveal], .js .mask > span, .js .statement .big .w { opacity: 1; transform: none; }
@@ -896,7 +1032,9 @@
     });
 
     /* ---------- Hero content drifts back as the film takes over ---------- */
-    gsap.to(".hero .wrap", { yPercent: -18, opacity: 0.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    mm.add("(min-width: 1001px)", function () {
+      gsap.to(".hero .wrap", { yPercent: -18, opacity: 0.2, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    });
 
     /* ---------- Products: pinned, liquid horizontal scroll (desktop) ---------- */
     mm.add("(min-width: 1001px)", function () {
@@ -927,7 +1065,7 @@
 
     /* ---------- Services: each card shrinks as the next one stacks on top ---------- */
     var svc = $$(".card");
-    mm.add({ d: "(min-width: 1001px)", m: "(max-width: 1000px)" }, function (ctx) {
+    mm.add({ d: "(min-width: 1001px)", t: "(min-width: 601px) and (max-width: 1000px)" }, function (ctx) {   /* phones: plain list */
       svc.forEach(function (c, i) {
         var next = svc[i + 1]; if (!next) return;
         var off = (ctx.conditions.d ? 120 : 90) + "px";
