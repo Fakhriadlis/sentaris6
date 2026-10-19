@@ -566,13 +566,16 @@
       .m-hero { padding: 0 var(--pad) 40px; }
       .m-kicker { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--cyan); }
       .m-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px rgba(61,226,255,.8); }
-      .hero .m-h1 { margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(26px, 8.4vw, 40px); line-height: 1.04; letter-spacing: -0.045em; }
+      .hero .m-h1 { margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(24px, 7.6vw, 36px); line-height: 1.16; letter-spacing: -0.02em; word-spacing: .06em; }
+      .m-h1 > span + span { margin-top: .04em; }
       .m-h1 > span { display: block; }
       .m-h1 b { font-weight: 800; }
       .m-sub { margin: 14px 0 0; font-size: clamp(16px, 4.3vw, 18px); line-height: 1.55; color: var(--mist); }
       #heroCta { margin-top: 22px; min-height: 54px; }
-      .m-trust { margin: 12px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--mist); text-align: center; }
-      .m-preview { margin: 28px 0 0; }
+      .m-trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; max-width: 340px; margin: 14px auto 0; padding: 0 6px; font-size: 12px; line-height: 1.4; color: var(--mist); }
+      .m-trust span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+      .m-trust span::before { content: ""; width: 10px; height: 10px; flex-shrink: 0; background: var(--cyan); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; }
+      .m-preview { margin: 26px -8px 0; }
       .m-frame { border-radius: 16px; padding: 0 6px 6px; background: linear-gradient(180deg, #1c2550, #0b1029); box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 30px 60px -30px rgba(0,0,0,.85), 0 0 70px -24px rgba(61,226,255,.4); }
       .m-frame-bar { display: flex; align-items: center; gap: 5px; height: 22px; padding: 0 4px; }
       .m-frame-bar i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.25); }
@@ -581,10 +584,11 @@
       .m-preview figcaption { margin-top: 10px; font-size: 12px; color: var(--mist); text-align: center; }
       .m-vid { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #0b1230; }
       .m-vid video { display: block; width: 100%; height: 100%; object-fit: cover; }
-      .m-vid-btn { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-start; padding: 10px; }
-      .m-vid-pill { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px 5px 5px; border-radius: 999px; background: rgba(7,11,31,.72); color: #fff; font-size: 12px; font-weight: 600; }
-      .m-vid-pill .m-play { width: 28px; height: 28px; }
-      .m-vid-pill .m-play svg { width: 12px; height: 12px; }
+      .m-vid-btn { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding: 12px; background: linear-gradient(180deg, rgba(7,11,31,0) 50%, rgba(7,11,31,.55) 100%); }
+      .m-vid-pill { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 6px 16px 6px 6px; border-radius: 999px; background: #fff; color: var(--ink); font-family: var(--display); font-size: 14px; font-weight: 700; box-shadow: 0 8px 24px -8px rgba(0,0,0,.6); }
+      .m-vid-pill .m-play { width: 32px; height: 32px; }
+      .m-vid-pill .m-play svg { width: 14px; height: 14px; }
+      .m-vid-pill .m-mute { width: 16px; height: 16px; color: var(--blue); margin-left: 2px; }
 
       /* shared section skeleton */
       .m-sec { position: relative; z-index: 2; padding: 52px 0; background: var(--paper); color: var(--ink); }
@@ -755,18 +759,18 @@
         <h1 class="m-h1"><span>Nomor 1 AI CRM</span><span><b class="grad">Content + Ads + Sales</b></span><span>dalem 1 dashboard.</span></h1>
         <p class="m-sub">Kelola WhatsApp, pantau performa iklan, dan optimalkan tim sales dengan bantuan AI dalam satu platform.</p>
         <a class="btn light block caps wa" href="#" id="heroCta" data-cta>Coba Gratis 5 Hari <span class="ar" aria-hidden="true">→</span></a>
-        <p class="m-trust">Gratis 5 hari · Onboarding di hari yang sama · Berhenti kapan saja</p>
+        <p class="m-trust"><span>Gratis 5 hari</span><span>Onboarding hari ini</span><span>Berhenti kapan saja</span></p>
         <figure class="m-preview">
           <div class="m-frame">
             <div class="m-frame-bar" aria-hidden="true"><i></i><i></i><i></i><b>app.sentaris.cloud</b></div>
             <div class="m-vid">
               <video data-src="SENTARIS%20LAUNCH.mp4" muted loop playsinline preload="none" aria-label="Film SENTARIS (tanpa suara)"></video>
               <button class="m-vid-btn" type="button" data-open-demo aria-label="Tonton film SENTARIS layar penuh dengan suara">
-                <span class="m-vid-pill"><span class="m-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>Putar dengan suara</span>
+                <span class="m-vid-pill"><span class="m-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>Putar dengan suara<svg class="m-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></span>
               </button>
             </div>
           </div>
-          <figcaption>Film SENTARIS · ketuk untuk menonton layar penuh</figcaption>
+          <figcaption>Ketuk video untuk menonton layar penuh</figcaption>
         </figure>
       </div>
 
@@ -853,7 +857,10 @@
           </ul>
         </details>
 
-      
+        <button class="m-film" type="button" data-open-demo>
+          <span class="m-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span><b>Tonton film demo</b><span>Diputar layar penuh, dengan suara</span></span>
+        </button>
       </div>
     </section>
 
