@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>SENTARIS — Nomor 1 AI CRM Content + Ads + Sales</title>
   <meta name="description" content="Nomor 1 AI CRM Content + Ads + Sales, dalem 1 dashboard. Semua nomor WhatsApp sales, iklan Meta terukur sampai closing, dan AI yang membalas lead dalam hitungan detik. Coba gratis 5 hari." />
-  <meta name="theme-color" content="#070b1f" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="icon" type="image/jpeg" href="2.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -606,13 +606,16 @@
       .m-benefits { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
       .m-benefits li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; padding: 14px; border-radius: 16px; background: var(--paper-2); }
       .m-benefits b, .m-more b, .m-steps b { display: block; font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
-      .m-benefits span, .m-more li span, .m-steps span { display: block; margin-top: 2px; font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+      .m-benefits li > div > span, .m-more li > div > span, .m-steps li > div > span { display: block; margin-top: 2px; font-size: 14px; line-height: 1.45; color: var(--ink-2); }
 
       /* 3. product: three cards, one at a time, cropped screenshots */
       #m-fitur { padding-top: 8px; }
       .m-feats { display: grid; gap: 16px; margin-top: 22px; }
       .m-feat { border-radius: 20px; overflow: hidden; background: var(--paper-2); }
       .m-crop { position: relative; display: block; width: 100%; padding: 0; aspect-ratio: 4 / 3; overflow: hidden; background: #0b1230; cursor: zoom-in; }
+      .m-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #0b1230; }
+      .m-media video { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .m-media-btn { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-end; padding: 10px; }
       .m-crop img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 0% 0%); transform: scale(var(--z, 1.35)); transform-origin: var(--pos, 0% 0%); }
       .m-zoom { position: absolute; right: 10px; bottom: 10px; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: rgba(7,11,31,.72); color: #fff; }
       .m-zoom svg { width: 18px; height: 18px; }
@@ -630,7 +633,7 @@
       .m-more ul { list-style: none; margin: 0; padding: 4px 16px 16px; display: grid; gap: 14px; }
       .m-more li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: start; }
       .m-more li b { font-size: 15px; }
-      .m-more li span { font-size: 13.5px; }
+      .m-more li > div > span { font-size: 13.5px; }
       .m-film { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 64px; margin-top: 14px; padding: 12px 16px; border-radius: 16px; background: var(--ink); color: #fff; text-align: left; }
       .m-play { width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(140deg, var(--cyan), var(--blue)); color: var(--ink); }
       .m-play svg { width: 18px; height: 18px; }
@@ -689,6 +692,192 @@
       .mbar .btn { min-height: 52px; }
     }
 
+
+    /* =========================================================================
+       LIGHT THEME — white-led, layered with soft blue & cyan from the logo.
+       Colours only: the layout and all behaviour stay exactly the same.
+       ========================================================================= */
+    :root {
+      --wash: #f5f8fd;      /* cool white for alternating layers */
+      --wash-2: #edf4ff;    /* light blue tint */
+      --sky: #e9f8ff;       /* light cyan tint */
+      --line-l: rgba(11,16,48,.08);
+      --muted: #5b6482;
+      --blue-d: #0047c2;
+    }
+    body { background: #fff; color: var(--ink); }
+    .grad { background: linear-gradient(90deg, #0047d6 0%, #0a8fe0 55%, #16b6e3 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .h2 .dim, .night .h2 .dim { color: #7c849e; }
+
+    /* buttons: primary = brand blue, secondary = ink outline */
+    .btn.light { background: var(--blue); color: #fff; box-shadow: 0 12px 26px -14px rgba(0,85,230,.7); }
+    .btn.light::before { background: var(--blue-d); }
+    .btn.line { color: var(--ink); box-shadow: inset 0 0 0 1px rgba(11,16,48,.2); }
+    .btn.line::before { background: var(--ink); }
+    .btn.line:hover { color: #fff; }
+
+    /* preloader */
+    .pre { background: #fff; color: var(--ink); }
+    .pre-top, .odo .pc { color: var(--muted); }
+    .pre-bar { background: rgba(11,16,48,.08); }
+
+    /* header: light glass (no blend mode) */
+    .hdr { mix-blend-mode: normal; color: var(--ink); background: rgba(255,255,255,.8); -webkit-backdrop-filter: saturate(160%) blur(14px); backdrop-filter: saturate(160%) blur(14px); box-shadow: 0 1px 0 var(--line-l); }
+    .logo i { background: var(--blue); }
+    .hdr .talk { color: var(--ink); }
+
+    /* fullscreen menu */
+    .menu { background: linear-gradient(180deg, #ffffff 0%, var(--wash-2) 100%); color: var(--ink); }
+    .menu li a::before { color: var(--muted); }
+    .menu li a:hover { color: var(--blue); }
+    .menu-foot { color: var(--muted); border-top-color: var(--line-l); }
+    .menu-foot a { color: var(--ink); }
+
+    /* hero */
+    .hero { background: radial-gradient(55% 60% at 92% 0%, rgba(61,226,255,.24), rgba(61,226,255,0) 70%), radial-gradient(45% 50% at 0% 100%, rgba(0,85,230,.09), rgba(0,85,230,0) 70%), #fff; }
+    .hero-glow { background: radial-gradient(closest-side, rgba(0,85,230,.16), rgba(61,226,255,.14) 55%, rgba(255,255,255,0)); }
+    .badge svg.ring text { fill: var(--muted); }
+    .hero-side p { color: var(--muted); }
+    .hero-side p b { color: var(--ink); }
+    .hero-chips .chip { background: #fff; color: var(--ink); box-shadow: 0 0 0 1px var(--line-l), 0 6px 16px -12px rgba(11,16,48,.35); }
+    .hero-chips .chip svg { color: var(--blue); }
+    .hero-film { box-shadow: 0 0 0 1px var(--line-l), 0 30px 60px -30px rgba(11,16,48,.45); }
+
+    /* film caption sits on the video on desktop, below it on tablets/phones */
+    .im-cap { color: #fff; }
+    .im-hint { color: var(--muted); }
+
+    /* rotator */
+    .rot .muted { color: rgba(11,16,48,.24); }
+
+    /* white sheets become soft cool-white layers with a light top edge */
+    .sheet { background: var(--wash); box-shadow: 0 -1px 0 var(--line-l), 0 -28px 50px -40px rgba(0,85,230,.45); }
+    .sheet.sheet-cont { box-shadow: none; }
+    .card { background: #fff; box-shadow: 0 0 0 1px var(--line-l); }
+    .card:nth-child(2) { background: #f2f7ff; }
+    .card:nth-child(3) { background: #eaf3ff; }
+    .tcard { background: #fff; box-shadow: 0 0 0 1px var(--line-l); }
+    .tcard .shot, .team .ph, .pcard .pm { background: #e7edf8; }
+
+    /* ticker */
+    .ticker { background: #fff; border-top-color: var(--line-l); border-bottom-color: var(--line-l); }
+    .tk-track span { color: var(--ink); }
+    .tk-track span svg { color: var(--blue); }
+
+    /* former dark sections → bright tinted sections */
+    .night { background: #fff; color: var(--ink); }
+    .night .eyebrow { color: var(--blue); }
+    .night .chip { background: #fff; color: var(--ink); box-shadow: 0 0 0 1px var(--line-l); }
+    .night .chip svg { color: var(--blue); }
+    .statement { background: linear-gradient(180deg, #f3f9ff 0%, var(--sky) 100%); }
+    .blob { opacity: .3; }
+    .blob::after { background: #f1f9ff; opacity: .75; }
+    .products { background: #fff; }
+    .pcard .tag, .pcard p, .hz-count, .night .swipe-hint { color: var(--muted); }
+    .hz-bar { background: rgba(11,16,48,.1); }
+
+    /* closing + footer */
+    .closing { background: linear-gradient(180deg, #ffffff 0%, var(--wash-2) 100%); color: var(--ink); }
+    .steps .si { background: #fff; box-shadow: 0 0 0 1px var(--line-l); }
+    .steps .si svg { color: var(--blue); }
+    .steps .ar2 { color: rgba(11,16,48,.3); }
+    .closing-fine { color: var(--muted); }
+    .magnet { color: #fff; background: linear-gradient(140deg, #16b6e3, var(--blue)); box-shadow: 0 24px 44px -22px rgba(0,85,230,.75); }
+    .foot { color: var(--muted); border-top-color: var(--line-l); }
+    .foot a { color: var(--ink); }
+    .foot a:hover { color: var(--blue); }
+
+    /* dialogs & sticky bar */
+    dialog::backdrop { background: rgba(11,16,48,.78); }
+    .mbar { background: rgba(255,255,255,.94); box-shadow: 0 0 0 1px var(--line-l), 0 18px 40px -16px rgba(11,16,48,.4); }
+
+    /* phone components */
+    .m-kicker { color: var(--blue); }
+    .m-dot { background: var(--blue); box-shadow: 0 0 0 4px rgba(0,85,230,.14); }
+    .m-sub, .m-trust, .m-preview figcaption { color: var(--muted); }
+    .m-trust span::before { background: var(--blue); }
+    .m-frame { background: #fff; box-shadow: 0 0 0 1px var(--line-l), 0 26px 50px -30px rgba(11,16,48,.5), 0 0 60px -24px rgba(61,226,255,.7); }
+    .m-frame-bar i { background: rgba(11,16,48,.16); }
+    .m-frame-bar b { color: var(--muted); }
+    .m-sec { background: #fff; color: var(--ink); }
+    .m-sheet { background: var(--wash); box-shadow: 0 -1px 0 var(--line-l), 0 -24px 44px -36px rgba(0,85,230,.45); }
+    .m-dark { background: linear-gradient(180deg, #f3f9ff 0%, var(--sky) 100%); color: var(--ink); }
+    .m-dark .m-eyebrow { color: var(--blue); }
+    .m-benefits li { background: #fff; box-shadow: 0 0 0 1px var(--line-l); }
+    .m-feat { background: var(--wash); box-shadow: 0 0 0 1px var(--line-l); }
+    .m-film { background: var(--wash-2); color: var(--ink); box-shadow: 0 0 0 1px rgba(0,85,230,.12); }
+    .m-film span span { color: var(--muted); }
+    .m-play { color: #fff; background: linear-gradient(140deg, #16b6e3, var(--blue)); }
+    .m-pair { background: #fff; box-shadow: 0 0 0 1px var(--line-l), 0 10px 24px -18px rgba(11,16,48,.35); }
+    .m-prob { color: var(--muted); }
+    .m-sol { color: var(--ink); }
+    .m-x { background: rgba(214,64,69,.1); color: #c9353b; }
+    .m-ok { background: var(--blue); color: #fff; }
+    .m-sn { background: var(--blue); }
+    .m-offer { background: linear-gradient(160deg, #0a5ef0 0%, #0047c2 62%, #13a6e0 135%); box-shadow: 0 30px 60px -30px rgba(0,85,230,.75); color: #fff; }
+    .m-offer .m-eyebrow { color: #bfeeff; }
+    .m-offer .m-price-sub, .m-offer .m-note { color: rgba(255,255,255,.82); }
+    .m-offer .m-checks svg { color: #bfeeff; }
+    .m-offer .btn.light { background: #fff; color: var(--ink); box-shadow: none; }
+    .m-offer .btn.light::before { background: var(--sky); }
+
+    @media (max-width: 1000px) { .im-cap { color: var(--ink); } }
+
+
+    /* =========================================================================
+       APPLE-STYLE BUTTONS — calm pills, sentence case, no arrows or shadows.
+       Primary: solid blue pill · Secondary: blue outline pill · Small: nav pill
+       ========================================================================= */
+    :root { --btn-blue: #0055e6; --btn-blue-h: #1a6bf0; --btn-blue-a: #0047c2; }
+    .btn { min-height: 44px; padding: 11px 22px; border-radius: 980px; font-family: var(--text); font-size: 17px; font-weight: 500; line-height: 1.18; letter-spacing: -0.022em; text-transform: none; box-shadow: none; overflow: visible; isolation: auto; transition: background-color .2s ease, color .2s ease, box-shadow .2s ease; }
+    .btn::before { display: none; }
+    .btn:active { transform: none; }
+    .btn .ar { display: none; }
+    .btn.caps { text-transform: none; letter-spacing: -0.022em; font-weight: 500; }
+
+    /* primary */
+    .btn.light, .btn.dark { background: var(--btn-blue); color: #fff; box-shadow: none; }
+    .btn.light:hover, .btn.dark:hover { background: var(--btn-blue-h); color: #fff; }
+    .btn.light:active, .btn.dark:active { background: var(--btn-blue-a); }
+    /* secondary */
+    .btn.line { background: transparent; color: var(--btn-blue); box-shadow: inset 0 0 0 1px var(--btn-blue); }
+    .btn.line:hover { background: var(--btn-blue); color: #fff; }
+    .btn.line:active { background: var(--btn-blue-a); color: #fff; }
+    /* on the blue offer card: white pill, blue text */
+    .m-offer .btn.light { background: #fff; color: var(--btn-blue); }
+    .m-offer .btn.light:hover { background: #f0f5ff; color: var(--btn-blue); }
+
+    /* small nav pill (desktop header) */
+    .hdr .talk { min-height: 34px; display: inline-flex; align-items: center; padding: 6px 16px; border-radius: 980px; background: var(--btn-blue); color: #fff; box-shadow: none; font-size: 14px; font-weight: 500; letter-spacing: -0.01em; transition: background-color .2s ease; }
+    .hdr .talk:hover { background: var(--btn-blue-h); }
+
+    /* icon buttons: no rings, just a quiet hover */
+    .burger { box-shadow: none; transition: background-color .2s ease; }
+    .burger:hover { background: rgba(11,16,48,.06); }
+    .burger span, .burger span::before, .burger span::after { width: 18px; height: 1.6px; }
+    .faq .pm { box-shadow: none; width: 28px; height: 28px; }
+    .faq .pm::before, .faq .pm::after { background: var(--ink-2); width: 13px; margin-left: -6.5px; }
+    .x { width: 40px; height: 40px; background: rgba(232,232,237,.95); color: #1d1d1f; font-size: 22px; box-shadow: none; }
+    .x:hover { background: #dcdce1; }
+
+    /* closing CTA: an Apple pill instead of the round magnet */
+    .magnet { width: auto; aspect-ratio: auto; min-height: 50px; padding: 14px 30px; border-radius: 980px; background: var(--btn-blue); color: #fff; box-shadow: none; font-family: var(--text); font-size: 17px; font-weight: 500; letter-spacing: -0.022em; line-height: 1.2; transition: background-color .2s ease; }
+    .magnet:hover { background: var(--btn-blue-h); }
+    .magnet br { display: none; }
+
+    /* film controls */
+    .m-vid-pill { font-family: var(--text); font-size: 15px; font-weight: 500; letter-spacing: -0.01em; box-shadow: 0 6px 20px -10px rgba(0,0,0,.55); }
+    .m-vid-pill .m-play, .m-play { background: var(--btn-blue); color: #fff; }
+    .m-film b { font-family: var(--text); font-weight: 600; letter-spacing: -0.015em; }
+
+    @media (max-width: 767px) {
+      .hdr .talk { display: none; }            /* phones: one sticky CTA only (bottom bar); the menu has its own */
+      .btn { font-size: 17px; }
+      #heroCta { min-height: 50px; }
+      .mbar .btn { min-height: 50px; }
+      .magnet { width: 100%; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .pre { display: none; }
       .js [data-reveal], .js .mask > span, .js .statement .big .w { opacity: 1; transform: none; }
@@ -728,7 +917,7 @@
         <a href="#testimoni">Testimoni</a>
         <a href="#tentang">Tentang</a>
       </nav>
-      <a class="talk wa" href="#">Mari bicara</a>
+      <a class="talk wa" href="#">Coba Gratis</a>
       <button class="burger" type="button" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><span></span></button>
     </div>
   </header>
@@ -824,35 +1013,35 @@
         <h2 class="m-h2" id="mf-title">Lihat langsung dasbornya.</h2>
         <div class="m-feats">
           <article class="m-feat">
-            <button class="m-crop" type="button" data-lightbox="fitur5.jpg" aria-label="Perbesar: papan pantau nomor WhatsApp sales" style="--pos: 0% 0%; --z: 1.35">
-              <img src="fitur5.jpg" width="1200" height="700" alt="Papan pantau nomor WhatsApp sales" loading="lazy" decoding="async" />
-              <span class="m-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2M11 8.5v5M8.5 11h5"/></svg></span>
-            </button>
-            <div class="m-feat-t"><span class="m-n">01</span><h3>Multi-Nomor WhatsApp</h3><p>Status respon tiap sales terlihat real-time, termasuk chat yang belum dibalas lebih dari 15–30 menit.</p></div>
+            <div class="m-media">
+              <video data-src="2_unlimited_numbers.mp4" muted loop playsinline preload="none" aria-label="Video: nomor WhatsApp tanpa batas"></video>
+              <button class="m-media-btn" type="button" data-open-video="2_unlimited_numbers.mp4" aria-label="Putar video Nomor WhatsApp tanpa batas layar penuh"><span class="m-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span></button>
+            </div>
+            <div class="m-feat-t"><span class="m-n">01</span><h3>Nomor WhatsApp tanpa batas</h3><p>5 atau 50 nomor sales masuk satu dasbor. Sales tetap pakai WhatsApp di HP, leader melihat semuanya.</p></div>
           </article>
           <article class="m-feat">
-            <button class="m-crop" type="button" data-lightbox="fitur4.jpg" aria-label="Perbesar: ADS Dashboard" style="--pos: 0% 0%; --z: 1.35">
-              <img src="fitur4.jpg" width="1200" height="700" alt="ADS Dashboard: belanja iklan dan chat masuk" loading="lazy" decoding="async" />
-              <span class="m-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2M11 8.5v5M8.5 11h5"/></svg></span>
-            </button>
-            <div class="m-feat-t"><span class="m-n">02</span><h3>ADS Dashboard</h3><p>Belanja iklan dan chat masuk di satu layar. Tiap iklan dinilai 1–10 dari pesan yang benar-benar masuk.</p></div>
+            <div class="m-media">
+              <video data-src="1_ads_dashboard.mp4" muted loop playsinline preload="none" aria-label="Video: ADS Dashboard"></video>
+              <button class="m-media-btn" type="button" data-open-video="1_ads_dashboard.mp4" aria-label="Putar video ADS Dashboard di dalam CRM layar penuh"><span class="m-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span></button>
+            </div>
+            <div class="m-feat-t"><span class="m-n">02</span><h3>ADS Dashboard di dalam CRM</h3><p>Tahu iklan Meta mana yang jadi chat, lead, dan closing. Tiap iklan dinilai 1–10 dari pesan yang benar-benar masuk.</p></div>
           </article>
           <article class="m-feat">
-            <button class="m-crop" type="button" data-lightbox="fitur2.jpg" aria-label="Perbesar: Horus AI" style="--pos: 0% 0%; --z: 1.35">
-              <img src="fitur2.jpg" width="1200" height="700" alt="Horus AI dengan 5 gaya persona" loading="lazy" decoding="async" />
-              <span class="m-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2M11 8.5v5M8.5 11h5"/></svg></span>
-            </button>
-            <div class="m-feat-t"><span class="m-n">03</span><h3>Horus AI 24 Jam</h3><p>Membalas lead siang dan malam dengan 5 gaya persona — sopan dan tidak mengarang harga.</p></div>
+            <div class="m-media">
+              <video data-src="3_mobile_friendly.mp4" muted loop playsinline preload="none" aria-label="Video: tampilan mobile"></video>
+              <button class="m-media-btn" type="button" data-open-video="3_mobile_friendly.mp4" aria-label="Putar video Mobile friendly layar penuh"><span class="m-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span></button>
+            </div>
+            <div class="m-feat-t"><span class="m-n">03</span><h3>Mobile friendly</h3><p>Dasbor penuh di HP: balas chat, pindah tahap lead, lihat skor iklan, dan terima notifikasi push.</p></div>
           </article>
         </div>
 
         <details class="m-more">
           <summary><span>Lihat fitur lainnya</span><span class="m-count">5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <ul>
+            <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5L4.5 13.5H12l-1 8 8.5-11H12z"/></svg></span><div><b>Horus AI 24 Jam</b><span>Membalas lead siang dan malam dengan 5 gaya persona, tanpa mengarang harga.</span></div></li>
             <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg></span><div><b>Kanban Pipeline</b><span>Geser lead antar tahap semudah drag and drop.</span></div></li>
             <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.7L4 15.5M4 20v-4.5h4.5"/></svg></span><div><b>Auto Follow-up</b><span>Susulan terjadwal, berhenti otomatis saat pelanggan membalas.</span></div></li>
             <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.9-3.5 3.4-5.5 6.5-5.5s5.6 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.5 3.5 5.2"/></svg></span><div><b>Lead Auto-Transfer</b><span>Lead yang didiamkan pindah otomatis ke sales lain.</span></div></li>
-            <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span><div><b>Mobile &amp; notifikasi push</b><span>Balas chat dan pindah tahap lead langsung dari HP.</span></div></li>
             <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/><path d="M4.5 5.5v13c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-13M4.5 12c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5"/></svg></span><div><b>Leads Database</b><span>Kolom diatur sesuai kebutuhan bisnis Anda.</span></div></li>
           </ul>
         </details>
@@ -1104,7 +1293,7 @@
           </ol>
           <p class="closing-fine">Chat pertama masuk hari itu juga · Berhenti kapan saja</p>
         </div>
-        <a class="magnet wa" href="#" id="magnet" data-cursor="Chat" data-cta><span>Coba Gratis<br /> 5 Hari →</span></a>
+        <a class="magnet wa" href="#" id="magnet" data-cursor="Chat" data-cta><span>Coba Gratis 5 Hari</span></a>
       </div>
       <div class="foot">
         <span>© 2026 SENTARIS. All rights reserved.</span>
@@ -1121,7 +1310,7 @@
 
   <div class="cur" id="cur" aria-hidden="true"></div>
   <div class="cur-ring" id="curRing" aria-hidden="true"></div>
-  <dialog id="demo" aria-label="Film demo SENTARIS"><button class="x" type="button" data-close aria-label="Tutup">×</button><video controls playsinline preload="none"></video></dialog>
+  <dialog id="demo" aria-label="Video SENTARIS"><button class="x" type="button" data-close aria-label="Tutup">×</button><video controls playsinline preload="none"></video></dialog>
   <dialog id="lightbox" aria-label="Gambar"><button class="x" type="button" data-close aria-label="Tutup">×</button><img alt="" /></dialog>
 
   <script>
@@ -1173,8 +1362,8 @@
 
     /* ---------- Dialogs ---------- */
     var demo = $("#demo"), dv = $("video", demo), lb = $("#lightbox"), lbi = $("img", lb);
-    var openDemo = function () {
-      if (!dv.getAttribute("src")) dv.src = "SENTARIS%20LAUNCH.mp4";
+    var openVideo = function (src) {
+      if (dv.getAttribute("src") !== src) dv.src = src;
       demo.showModal();
       var p = dv.play(); if (p && p.catch) p.catch(function () {});
       if (!isDesk()) {                                  /* phones: native full screen, rotate to landscape if allowed */
@@ -1187,6 +1376,8 @@
         } catch (err) {}
       }
     };
+    var openDemo = function () { openVideo("SENTARIS%20LAUNCH.mp4"); };
+    $$("[data-open-video]").forEach(function (b) { b.addEventListener("click", function () { openVideo(b.dataset.openVideo); }); });
     /* leaving full screen on a phone closes the player */
     document.addEventListener("fullscreenchange", function () { if (!document.fullscreenElement && !isDesk() && demo.open) demo.close(); });
     dv.addEventListener("webkitendfullscreen", function () { if (demo.open) demo.close(); });
@@ -1423,13 +1614,6 @@
       } });
     });
 
-    /* ---------- Magnetic CTA ---------- */
-    var mag = $("#magnet");
-    if (mag && fine) {
-      var mx = gsap.quickTo(mag, "x", { duration: 0.6, ease: "elastic.out(1, .4)" }), my = gsap.quickTo(mag, "y", { duration: 0.6, ease: "elastic.out(1, .4)" });
-      mag.addEventListener("mousemove", function (e) { var r = mag.getBoundingClientRect(); mx((e.clientX - r.left - r.width / 2) * 0.35); my((e.clientY - r.top - r.height / 2) * 0.35); });
-      mag.addEventListener("mouseleave", function () { mx(0); my(0); });
-    }
 
     addEventListener("load", function () { ScrollTrigger.refresh(); });
   };
