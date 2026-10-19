@@ -7,7 +7,6 @@
   <meta name="description" content="Nomor 1 AI CRM Content + Ads + Sales, dalem 1 dashboard. Semua nomor WhatsApp sales, iklan Meta terukur sampai closing, dan AI yang membalas lead dalam hitungan detik. Coba gratis 5 hari." />
   <meta name="theme-color" content="#070b1f" />
   <link rel="icon" type="image/jpeg" href="2.jpeg" />
-  <link rel="preload" as="image" href="fitur1.jpg" media="(max-width: 767px)" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -580,6 +579,12 @@
       .m-frame-bar b { margin: 0 auto; font-size: 9.5px; font-weight: 500; color: var(--mist); letter-spacing: .02em; }
       .m-frame img { display: block; width: 100%; height: auto; aspect-ratio: 12 / 7; object-fit: cover; object-position: top left; border-radius: 10px; background: #0b1230; }
       .m-preview figcaption { margin-top: 10px; font-size: 12px; color: var(--mist); text-align: center; }
+      .m-vid { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #0b1230; }
+      .m-vid video { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .m-vid-btn { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: flex-start; padding: 10px; }
+      .m-vid-pill { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px 5px 5px; border-radius: 999px; background: rgba(7,11,31,.72); color: #fff; font-size: 12px; font-weight: 600; }
+      .m-vid-pill .m-play { width: 28px; height: 28px; }
+      .m-vid-pill .m-play svg { width: 12px; height: 12px; }
 
       /* shared section skeleton */
       .m-sec { position: relative; z-index: 2; padding: 52px 0; background: var(--paper); color: var(--ink); }
@@ -754,12 +759,14 @@
         <figure class="m-preview">
           <div class="m-frame">
             <div class="m-frame-bar" aria-hidden="true"><i></i><i></i><i></i><b>app.sentaris.cloud</b></div>
-            <picture>
-              <source media="(max-width: 767px)" srcset="fitur1.jpg" />
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1200" height="700" alt="Dasbor SENTARIS: pipeline chat semua nomor WhatsApp sales" fetchpriority="high" decoding="async" />
-            </picture>
+            <div class="m-vid">
+              <video data-src="SENTARIS%20LAUNCH.mp4" muted loop playsinline preload="none" aria-label="Film SENTARIS (tanpa suara)"></video>
+              <button class="m-vid-btn" type="button" data-open-demo aria-label="Tonton film SENTARIS layar penuh dengan suara">
+                <span class="m-vid-pill"><span class="m-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>Putar dengan suara</span>
+              </button>
+            </div>
           </div>
-          <figcaption>Tampilan dasbor SENTARIS · Pipeline chat</figcaption>
+          <figcaption>Film SENTARIS · ketuk untuk menonton layar penuh</figcaption>
         </figure>
       </div>
 
@@ -846,10 +853,7 @@
           </ul>
         </details>
 
-        <button class="m-film" type="button" data-open-demo>
-          <span class="m-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-          <span><b>Tonton film demo</b><span>Diputar layar penuh, dengan suara</span></span>
-        </button>
+      
       </div>
     </section>
 
@@ -1150,10 +1154,11 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
 
     /* ---------- Videos: load + play only while visible ---------- */
+    var saveData = !!(navigator.connection && navigator.connection.saveData);
     var vio = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         var v = e.target;
-        if (e.isIntersecting) { if (!v.getAttribute("src")) v.src = v.dataset.src; if (!reduce) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
+        if (e.isIntersecting) { if (!v.getAttribute("src")) { v.preload = "metadata"; v.src = v.dataset.src; } if (!reduce && !saveData) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
         else if (!v.paused) v.pause();
       });
     }, { threshold: 0.2 });
