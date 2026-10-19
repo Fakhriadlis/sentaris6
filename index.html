@@ -611,7 +611,8 @@
       /* 3. product: three cards, one at a time, cropped screenshots */
       #m-fitur { padding-top: 8px; }
       .m-feats { display: grid; gap: 16px; margin-top: 22px; }
-      .m-feat { border-radius: 20px; overflow: hidden; background: var(--paper-2); }
+      .m-feat { position: sticky; top: calc(68px + var(--i, 0) * 10px); border-radius: 20px; overflow: hidden; background: var(--paper-2); transform-origin: 50% 0; will-change: transform; }
+      .m-feat > * { transition: opacity .12s linear; }
       .m-crop { position: relative; display: block; width: 100%; padding: 0; aspect-ratio: 4 / 3; overflow: hidden; background: #0b1230; cursor: zoom-in; }
       .m-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #0b1230; }
       .m-media video { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -878,6 +879,77 @@
       .magnet { width: 100%; }
     }
 
+
+    /* =========================================================================
+       COLOUR PLAY — feature cards (desktop + phone), more-features gallery,
+       and the full-screen film. Brand colours only: cyan · blue · indigo.
+       ========================================================================= */
+    /* desktop film: full screen right away */
+    @media (min-width: 1001px) {
+      .immersive { height: 100vh; height: 100svh; }
+      .im-stage { position: relative; top: auto; }
+      .im-box { clip-path: none !important; will-change: auto; overflow: hidden; }
+      .im-box video { transform-origin: 50% 50%; will-change: transform; }
+      .im-cap { opacity: 1; bottom: clamp(110px, 15vh, 150px); }
+      .im-scroll { position: absolute; z-index: 3; left: 50%; bottom: 30px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 10px; color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(0,0,0,.4); }
+      .im-mouse { position: relative; width: 24px; height: 38px; border-radius: 14px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.85); }
+      .im-mouse i { position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: #fff; animation: wheel 1.6s cubic-bezier(.6,0,.3,1) infinite; }
+      @keyframes wheel { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(12px); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }
+    }
+    .im-scroll { display: none; }
+    @media (min-width: 1001px) { .im-scroll { display: flex; } }
+
+    /* card themes */
+    .t-cyan   { --acc: #0a86b8; --acc-2: #16b6e3; --tint: #dff7ff; }
+    .t-blue   { --acc: #bfeeff; --acc-2: #ffffff; --tint: #0a5ef0; }
+    .t-indigo { --acc: #4b4fe0; --acc-2: #7a7ef2; --tint: #e7e9ff; }
+    .t-teal   { --acc: #0d8f86; --acc-2: #22c1b4; --tint: #dcf7f3; }
+    .t-sky    { --acc: #0055e6; --acc-2: #3d8bff; --tint: #e6efff; }
+
+    .card.t-cyan   { background: radial-gradient(120% 130% at 0% 0%, #d9f6ff 0%, #f1fbff 45%, #ffffff 100%); box-shadow: 0 0 0 1px rgba(22,182,227,.2), 0 40px 80px -50px rgba(22,182,227,.7); }
+    .card.t-blue   { background: linear-gradient(145deg, #0a5ef0 0%, #0047c2 55%, #0a2f9e 100%); color: #fff; box-shadow: 0 40px 90px -45px rgba(0,71,194,.85); }
+    .card.t-indigo { background: radial-gradient(120% 130% at 100% 0%, #e2e5ff 0%, #f3f4ff 45%, #ffffff 100%); box-shadow: 0 0 0 1px rgba(75,79,224,.18), 0 40px 80px -50px rgba(75,79,224,.6); }
+    .card .n { display: inline-flex; align-items: center; justify-content: center; min-width: 46px; height: 30px; padding: 0 12px; border-radius: 999px; font-size: 14px; color: #fff; background: linear-gradient(135deg, var(--acc-2), var(--acc)); }
+    .card.t-blue .n { color: #0047c2; background: #fff; }
+    .card h3 { letter-spacing: -0.045em; }
+    .card .hl, .m-feat .hl { background: linear-gradient(90deg, var(--acc), var(--acc-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .card.t-blue .hl, .m-feat.t-blue .hl { background: linear-gradient(90deg, #a8ecff, #ffffff); -webkit-background-clip: text; background-clip: text; }
+    .card .tagline { display: inline-flex; align-items: center; gap: 10px; margin: 18px 0 0; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--acc); }
+    .card .tagline::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--acc-2), var(--acc)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc-2) 22%, transparent); }
+    .card.t-blue .tagline { color: #d6f5ff; }
+    .card .chip { box-shadow: 0 0 0 1px color-mix(in srgb, var(--acc) 22%, transparent); }
+    .card .chip svg { color: var(--acc); }
+    .card.t-blue .chip { background: rgba(255,255,255,.12); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.24); }
+    .card.t-blue .chip svg { color: #bfeeff; }
+    .card .cmedia { box-shadow: 0 24px 50px -28px rgba(11,16,48,.55); }
+
+    /* phone product cards */
+    .m-feat.t-cyan   { background: linear-gradient(180deg, #e3f8ff 0%, #f5fcff 100%); box-shadow: 0 0 0 1px rgba(22,182,227,.22); }
+    .m-feat.t-blue   { background: linear-gradient(160deg, #0a5ef0 0%, #0047c2 60%, #0a2f9e 100%); color: #fff; box-shadow: 0 24px 50px -30px rgba(0,71,194,.85); }
+    .m-feat.t-indigo { background: linear-gradient(180deg, #eaecff 0%, #f6f6ff 100%); box-shadow: 0 0 0 1px rgba(75,79,224,.2); }
+    .m-feat .m-n { color: var(--acc); }
+    .m-feat.t-blue .m-n { color: #bfeeff; }
+    .m-feat.t-blue .m-feat-t p { color: rgba(255,255,255,.85); }
+    .m-feat .m-tag { display: inline-flex; align-items: center; gap: 8px; margin: 8px 0 0 !important; font-size: 13.5px !important; font-weight: 600; color: var(--acc) !important; }
+    .m-feat .m-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, var(--acc-2), var(--acc)); }
+    .m-feat.t-blue .m-tag { color: #d6f5ff !important; }
+
+    /* phone "more features": swipe gallery of image cards */
+    .m-more-row { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 16px; padding: 4px 16px 6px; scrollbar-width: none; }
+    .m-more-row::-webkit-scrollbar { display: none; }
+    .m-mcard { flex: 0 0 82%; scroll-snap-align: start; border-radius: 18px; overflow: hidden; background: linear-gradient(180deg, var(--tint) 0%, #ffffff 100%); box-shadow: 0 0 0 1px color-mix(in srgb, var(--acc) 18%, transparent); }
+    .m-mcard.t-blue { background: linear-gradient(160deg, #0a5ef0 0%, #0047c2 65%, #0a2f9e 100%); color: #fff; box-shadow: none; }
+    .m-mimg { display: block; width: 100%; padding: 0; aspect-ratio: 16 / 10; overflow: hidden; background: #e7edf8; cursor: zoom-in; }
+    .m-mimg img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+    .m-mtxt { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: start; padding: 14px 14px 16px; }
+    .m-mic { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, var(--acc-2), var(--acc)); }
+    .m-mcard.t-blue .m-mic { background: rgba(255,255,255,.16); color: #bfeeff; }
+    .m-mic svg { width: 18px; height: 18px; }
+    .m-mtxt b { display: block; font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
+    .m-mtxt span { display: block; margin-top: 3px; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+    .m-mcard.t-blue .m-mtxt span { color: rgba(255,255,255,.82); }
+    .m-more .m-dots { margin: 2px 0 6px; }
+
     @media (prefers-reduced-motion: reduce) {
       .pre { display: none; }
       .js [data-reveal], .js .mask > span, .js .statement .big .w { opacity: 1; transform: none; }
@@ -886,7 +958,8 @@
       .im-box { clip-path: none; }
       .im-cap { opacity: 1; }
       @media (max-width: 1000px) { .im-stage { aspect-ratio: auto; padding: 56px 0; } }
-      .slot span, .blob, .badge svg.ring, .hero-glow, .tk-track { animation: none; }
+      .m-feat { position: relative; top: auto; }
+      .slot span, .blob, .badge svg.ring, .hero-glow, .tk-track, .im-mouse i { animation: none; }
     }
   </style>
 </head>
@@ -1012,41 +1085,59 @@
         <p class="m-eyebrow">Produk</p>
         <h2 class="m-h2" id="mf-title">Lihat langsung dasbornya.</h2>
         <div class="m-feats">
-          <article class="m-feat">
+          <article class="m-feat t-cyan" style="--i:0">
             <div class="m-media">
               <video data-src="2_unlimited_numbers.mp4" muted loop playsinline preload="none" aria-label="Video: nomor WhatsApp tanpa batas"></video>
               <button class="m-media-btn" type="button" data-open-video="2_unlimited_numbers.mp4" aria-label="Putar video Nomor WhatsApp tanpa batas layar penuh"><span class="m-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span></button>
             </div>
-            <div class="m-feat-t"><span class="m-n">01</span><h3>Nomor WhatsApp tanpa batas</h3><p>5 atau 50 nomor sales masuk satu dasbor. Sales tetap pakai WhatsApp di HP, leader melihat semuanya.</p></div>
+            <div class="m-feat-t"><span class="m-n">01</span><h3>Nomor WhatsApp <span class="hl">tanpa batas</span></h3><p class="m-tag">50+ nomor aktif di satu dasbor hari ini</p><p>5 atau 50 nomor sales masuk satu dasbor. Sales tetap pakai WhatsApp di HP, leader melihat semuanya.</p></div>
           </article>
-          <article class="m-feat">
+          <article class="m-feat t-blue" style="--i:1">
             <div class="m-media">
               <video data-src="1_ads_dashboard.mp4" muted loop playsinline preload="none" aria-label="Video: ADS Dashboard"></video>
               <button class="m-media-btn" type="button" data-open-video="1_ads_dashboard.mp4" aria-label="Putar video ADS Dashboard di dalam CRM layar penuh"><span class="m-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span></button>
             </div>
-            <div class="m-feat-t"><span class="m-n">02</span><h3>ADS Dashboard di dalam CRM</h3><p>Tahu iklan Meta mana yang jadi chat, lead, dan closing. Tiap iklan dinilai 1–10 dari pesan yang benar-benar masuk.</p></div>
+            <div class="m-feat-t"><span class="m-n">02</span><h3>ADS Dashboard <span class="hl">di dalam CRM</span></h3><p class="m-tag">Belanja iklan ↔ chat masuk, satu layar</p><p>Tahu iklan Meta mana yang jadi chat, lead, dan closing. Tiap iklan dinilai 1–10 dari pesan yang benar-benar masuk.</p></div>
           </article>
-          <article class="m-feat">
+          <article class="m-feat t-indigo" style="--i:2">
             <div class="m-media">
               <video data-src="3_mobile_friendly.mp4" muted loop playsinline preload="none" aria-label="Video: tampilan mobile"></video>
               <button class="m-media-btn" type="button" data-open-video="3_mobile_friendly.mp4" aria-label="Putar video Mobile friendly layar penuh"><span class="m-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span></button>
             </div>
-            <div class="m-feat-t"><span class="m-n">03</span><h3>Mobile friendly</h3><p>Dasbor penuh di HP: balas chat, pindah tahap lead, lihat skor iklan, dan terima notifikasi push.</p></div>
+            <div class="m-feat-t"><span class="m-n">03</span><h3>Mobile <span class="hl">friendly</span></h3><p class="m-tag">iPhone &amp; Android · notifikasi push</p><p>Dasbor penuh di HP: balas chat, pindah tahap lead, lihat skor iklan, dan terima notifikasi push.</p></div>
           </article>
         </div>
 
         <details class="m-more">
           <summary><span>Lihat fitur lainnya</span><span class="m-count">5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <ul>
-            <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5L4.5 13.5H12l-1 8 8.5-11H12z"/></svg></span><div><b>Horus AI 24 Jam</b><span>Membalas lead siang dan malam dengan 5 gaya persona, tanpa mengarang harga.</span></div></li>
-            <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg></span><div><b>Kanban Pipeline</b><span>Geser lead antar tahap semudah drag and drop.</span></div></li>
-            <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.7L4 15.5M4 20v-4.5h4.5"/></svg></span><div><b>Auto Follow-up</b><span>Susulan terjadwal, berhenti otomatis saat pelanggan membalas.</span></div></li>
-            <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.9-3.5 3.4-5.5 6.5-5.5s5.6 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.5 3.5 5.2"/></svg></span><div><b>Lead Auto-Transfer</b><span>Lead yang didiamkan pindah otomatis ke sales lain.</span></div></li>
-            <li><span class="m-ic sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.5"/><path d="M4.5 5.5v13c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5v-13M4.5 12c0 1.4 3.4 2.5 7.5 2.5s7.5-1.1 7.5-2.5"/></svg></span><div><b>Leads Database</b><span>Kolom diatur sesuai kebutuhan bisnis Anda.</span></div></li>
-          </ul>
+          <div class="m-more-row">
+            <article class="m-mcard t-blue">
+              <button class="m-mimg" type="button" data-lightbox="fitur2.jpg" aria-label="Perbesar: Horus AI 24 Jam"><img src="fitur2.jpg" width="1200" height="700" alt="Horus AI 24 jam dengan 5 gaya persona" loading="lazy" decoding="async" /></button>
+              <div class="m-mtxt"><span class="m-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5L4.5 13.5H12l-1 8 8.5-11H12z"/></svg></span><div><b>Horus AI 24 Jam</b><span>Membalas lead siang dan malam dengan 5 gaya persona, tanpa mengarang harga.</span></div></div>
+            </article>
+            <article class="m-mcard t-cyan">
+              <button class="m-mimg" type="button" data-lightbox="fitur1.jpg" aria-label="Perbesar: Kanban Pipeline"><img src="fitur1.jpg" width="1200" height="700" alt="Pipeline Kanban" loading="lazy" decoding="async" /></button>
+              <div class="m-mtxt"><span class="m-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg></span><div><b>Kanban Pipeline</b><span>Geser lead dari Hot Leads sampai Sudah Beli, semudah drag and drop.</span></div></div>
+            </article>
+            <article class="m-mcard t-indigo">
+              <button class="m-mimg" type="button" data-lightbox="fitur3.jpg" aria-label="Perbesar: Auto Follow-up"><img src="fitur3.jpg" width="1200" height="700" alt="Auto Follow-up" loading="lazy" decoding="async" /></button>
+              <div class="m-mtxt"><span class="m-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.7L4 15.5M4 20v-4.5h4.5"/></svg></span><div><b>Auto Follow-up</b><span>Susulan terjadwal, berhenti otomatis saat pelanggan membalas.</span></div></div>
+            </article>
+            <article class="m-mcard t-teal">
+              <button class="m-mimg" type="button" data-lightbox="fitur4.jpg" aria-label="Perbesar: Rekap Iklan"><img src="fitur4.jpg" width="1200" height="700" alt="Rekap iklan: ROAS dan biaya per chat" loading="lazy" decoding="async" /></button>
+              <div class="m-mtxt"><span class="m-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6 16v-5M11 16V7M16 16v-8M21 4l-5 4-5-3-5 4"/></svg></span><div><b>Rekap Iklan</b><span>ROAS asli, biaya per chat terverifikasi, dan omzet per iklan.</span></div></div>
+            </article>
+            <article class="m-mcard t-sky">
+              <button class="m-mimg" type="button" data-lightbox="fitur5.jpg" aria-label="Perbesar: Papan Pantau"><img src="fitur5.jpg" width="1200" height="700" alt="Papan pantau nomor sales" loading="lazy" decoding="async" /></button>
+              <div class="m-mtxt"><span class="m-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><div><b>Papan Pantau</b><span>Tandai chat yang belum dibalas lebih dari 15–30 menit.</span></div></div>
+            </article>
+          </div>
         </details>
 
-       
+        <button class="m-film" type="button" data-open-demo>
+          <span class="m-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span><b>Tonton film demo</b><span>Diputar layar penuh, dengan suara</span></span>
+        </button>
       </div>
     </section>
 
@@ -1072,11 +1163,12 @@
           <button class="btn light" type="button" data-open-demo>Tonton dengan suara <span class="ar" aria-hidden="true">→</span></button>
           <span class="im-hint">Diputar layar penuh · putar HP ke samping untuk tampilan terbesar</span>
         </div>
+        <div id="imScrollOut"><a class="im-scroll" id="imScroll" href="#bantu" aria-label="Scroll ke bawah"><span class="im-mouse" aria-hidden="true"><i></i></span><span>Scroll ke bawah</span></a></div>
       </div>
     </section>
 
     <!-- ===================== WORD ROTATOR ===================== -->
-    <section class="rot d-only" aria-label="Apa yang SENTARIS kerjakan">
+    <section class="rot d-only" id="bantu" aria-label="Apa yang SENTARIS kerjakan">
       <div class="wrap">
         <p><span class="muted">Kami bantu</span><br />
           <span class="slot" aria-hidden="true"><span>membalas</span><span>membagi</span><span>mencatat</span><span>membalas</span></span><span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">membalas, membagi, dan mencatat</span><br />
@@ -1094,18 +1186,18 @@
           </div>
         </div>
         <div class="cards">
-          <article class="card" style="--i:0">
-            <div><span class="n">01</span><h3>Nomor WhatsApp tanpa batas</h3>
+          <article class="card t-cyan" style="--i:0">
+            <div><span class="n">01</span><h3>Nomor WhatsApp <span class="hl">tanpa batas</span></h3><p class="tagline">50+ nomor aktif di satu dasbor hari ini.</p>
               <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg>50+ nomor</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Leader lihat semua</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.9-3.5 3.4-5.5 6.5-5.5s5.6 2 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.8.7 3 2.5 3.5 5.2"/></svg>Tetap di HP sales</span></div></div>
             <div class="cmedia"><video data-src="2_unlimited_numbers.mp4" muted loop playsinline preload="none" aria-label="Video: nomor WhatsApp tanpa batas"></video></div>
           </article>
-          <article class="card" style="--i:1">
-            <div><span class="n">02</span><h3>ADS Dashboard di dalam CRM</h3>
+          <article class="card t-blue" style="--i:1">
+            <div><span class="n">02</span><h3>ADS Dashboard <span class="hl">di dalam CRM</span></h3><p class="tagline">Belanja iklan ↔ chat masuk, satu layar.</p>
               <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 16v-5M11 16V7M16 16v-8M21 4l-5 4-5-3-5 4"/></svg>Skor iklan 1–10</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5c-.5-.9-1.5-1.5-2.5-1.5-1.4 0-2.5.8-2.5 2s1.1 1.6 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2c-1 0-2-.6-2.5-1.5M12 6.5v1.5M12 16v1.5"/></svg>ROAS asli</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16.5 9.5"/></svg>Sales yang closing</span></div></div>
             <div class="cmedia"><video data-src="1_ads_dashboard.mp4" muted loop playsinline preload="none" aria-label="Video: ADS Dashboard"></video></div>
           </article>
-          <article class="card" style="--i:2">
-            <div><span class="n">03</span><h3>Mobile friendly</h3>
+          <article class="card t-indigo" style="--i:2">
+            <div><span class="n">03</span><h3>Mobile <span class="hl">friendly</span></h3><p class="tagline">iPhone &amp; Android · notifikasi push.</p>
               <div class="chips"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18h3"/></svg>iPhone &amp; Android</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>Notifikasi push</span><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Pantau dari mana saja</span></div></div>
             <div class="cmedia"><video data-src="3_mobile_friendly.mp4" muted loop playsinline preload="none" aria-label="Video: tampilan mobile"></video></div>
           </article>
@@ -1415,13 +1507,13 @@
       });
     });
 
-    /* ---------- Phones: testimonial swipe gets dot indicators ---------- */
-    (function () {
-      var row = $(".testi"); if (!row) return;
-      var cards = $$(".tcard", row), dots = document.createElement("div");
-      dots.className = "m-dots m-only"; dots.setAttribute("role", "group"); dots.setAttribute("aria-label", "Pilih testimoni");
-      cards.forEach(function (c, i) {
-        var d = document.createElement("button"); d.type = "button"; d.setAttribute("aria-label", "Testimoni " + (i + 1));
+    /* ---------- Phones: swipe rows get dot indicators (testimonials, more features) ---------- */
+    var addDots = function (row, itemSel, label) {
+      if (!row) return;
+      var items = $$(itemSel, row), dots = document.createElement("div");
+      dots.className = "m-dots m-only"; dots.setAttribute("role", "group"); dots.setAttribute("aria-label", label);
+      items.forEach(function (c, i) {
+        var d = document.createElement("button"); d.type = "button"; d.setAttribute("aria-label", label + " " + (i + 1));
         d.addEventListener("click", function () { row.scrollTo({ left: c.offsetLeft - row.offsetLeft - parseFloat(getComputedStyle(row).paddingLeft || 0), behavior: "smooth" }); });
         dots.appendChild(d);
       });
@@ -1429,11 +1521,43 @@
       var raf = 0;
       var upd = function () {
         raf = 0;
-        var max = row.scrollWidth - row.clientWidth, p = max > 0 ? row.scrollLeft / max : 0, n = Math.round(p * (cards.length - 1));
+        var max = row.scrollWidth - row.clientWidth, p = max > 0 ? row.scrollLeft / max : 0, n = Math.round(p * (items.length - 1));
         Array.prototype.forEach.call(dots.children, function (d, i) { d.classList.toggle("on", i === n); d.setAttribute("aria-current", i === n ? "true" : "false"); });
       };
       row.addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
       upd();
+    };
+    addDots($(".testi"), ".tcard", "Testimoni");
+    addDots($(".m-more-row"), ".m-mcard", "Fitur");
+
+    /* ---------- Phones: product cards stack like on desktop (no library needed) ---------- */
+    (function () {
+      var cards = $$(".m-feat"); if (cards.length < 2) return;
+      var raf = 0, clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+      var reset = function () { cards.forEach(function (c) { c.style.transform = ""; Array.prototype.forEach.call(c.children, function (ch) { ch.style.opacity = ""; }); }); };
+      var update = function () {
+        raf = 0;
+        if (!isMob() || reduce) { reset(); return; }
+        var vh = innerHeight;
+        cards.forEach(function (c, i) {
+          var next = cards[i + 1]; if (!next) return;
+          var top = next.getBoundingClientRect().top, end = parseFloat(getComputedStyle(next).top) || 80;
+          var p = clamp((vh - top) / (vh - end));                  /* next card travelling up → shrink */
+          var q = clamp((vh * 0.65 - top) / (vh * 0.65 - end));    /* nearly covered → content fades */
+          c.style.transform = p ? "scale(" + (1 - 0.06 * p).toFixed(4) + ")" : "";
+          var o = (1 - q).toFixed(3);
+          Array.prototype.forEach.call(c.children, function (ch) { ch.style.opacity = q ? o : ""; });
+          var v = $("video", c);                                    /* a covered card's video takes a break */
+          if (v && v.getAttribute("src")) {
+            if (q > 0.98 && !v.paused) { v.pause(); v.dataset.stack = "1"; }
+            else if (q < 0.9 && v.paused && v.dataset.stack === "1") { v.dataset.stack = ""; if (!saveData) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } }
+          }
+        });
+      };
+      addEventListener("scroll", function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+      addEventListener("resize", function () { if (!raf) raf = requestAnimationFrame(update); });
+      mqMob.addEventListener ? mqMob.addEventListener("change", update) : mqMob.addListener(update);
+      update();
     })();
 
     /* ---------- Phones: product swipe shows its own progress ---------- */
@@ -1541,9 +1665,15 @@
 
     /* ---------- Immersive scale: the film opens to full screen (desktop only; phones show it as a plain block) ---------- */
     mm.add("(min-width: 1001px)", function () {
-      gsap.timeline({ scrollTrigger: { trigger: "#film", start: "top top", end: "bottom bottom", scrub: 0.6 } })
-        .fromTo("#imBox", { clipPath: "inset(22% 30% 22% 30% round 28px)" }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "power2.inOut", duration: 1 })
-        .to("#imCap", { opacity: 1, duration: 0.3 }, 0.75);
+      /* full screen from the start; it arrives with a slow zoom-out, the caption rises, then the scroll cue */
+      gsap.timeline({ scrollTrigger: { trigger: "#film", start: "top 70%", toggleActions: "play none none reverse" } })
+        .fromTo("#imBox video", { scale: 1.16 }, { scale: 1, duration: 1.9, ease: "expo.out" })
+        .fromTo("#imCap h2", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: "expo.out" }, 0.2)
+        .fromTo("#imCap .btn", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, 0.4)
+        .fromTo("#imScroll", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.7);
+      /* depth while leaving: the film drifts, the caption and cue fade */
+      gsap.to("#imBox video", { yPercent: 8, ease: "none", scrollTrigger: { trigger: "#film", start: "top top", end: "bottom top", scrub: true } });
+      gsap.to(["#imCap", "#imScrollOut"], { autoAlpha: 0, ease: "none", scrollTrigger: { trigger: "#film", start: "top top", end: "55% top", scrub: true } });
     });
 
     /* ---------- Hero content drifts back as the film takes over ---------- */
