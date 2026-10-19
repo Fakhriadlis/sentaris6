@@ -624,7 +624,11 @@
       .m-n { font-family: var(--display); font-size: 12px; font-weight: 700; color: var(--blue); }
       .m-feat-t h3 { margin: 4px 0 0; font-family: var(--display); font-size: 20px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.2; }
       .m-feat-t p { margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
-      .m-more { margin-top: 14px; border-radius: 16px; background: #fff; box-shadow: 0 0 0 1px rgba(11,16,48,.1); }
+      .m-more { margin-top: 26px; }
+      .m-more-h { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+      .m-more-h h3 { margin: 0; font-family: var(--display); font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+      .m-more-hint { margin-left: auto; font-size: 13px; font-weight: 500; color: var(--muted, #5b6482); }
+      .m-more-row { margin: 0 calc(var(--pad) * -1) !important; padding: 4px var(--pad) 8px !important; scroll-padding: 0 var(--pad) !important; }
       .m-more summary { list-style: none; display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 16px; cursor: pointer; font-family: var(--display); font-size: 16px; font-weight: 600; }
       .m-more summary::-webkit-details-marker { display: none; }
       .m-more summary > span:first-child { flex: 1; }
@@ -899,55 +903,45 @@
     .im-scroll { display: none; }
     @media (min-width: 1001px) { .im-scroll { display: flex; } }
 
-    /* card themes */
-    .t-cyan   { --acc: #0a86b8; --acc-2: #16b6e3; --tint: #dff7ff; }
-    .t-blue   { --acc: #bfeeff; --acc-2: #ffffff; --tint: #0a5ef0; }
-    .t-indigo { --acc: #4b4fe0; --acc-2: #7a7ef2; --tint: #e7e9ff; }
-    .t-teal   { --acc: #0d8f86; --acc-2: #22c1b4; --tint: #dcf7f3; }
-    .t-sky    { --acc: #0055e6; --acc-2: #3d8bff; --tint: #e6efff; }
-
-    .card.t-cyan   { background: radial-gradient(120% 130% at 0% 0%, #d9f6ff 0%, #f1fbff 45%, #ffffff 100%); box-shadow: 0 0 0 1px rgba(22,182,227,.2), 0 40px 80px -50px rgba(22,182,227,.7); }
-    .card.t-blue   { background: linear-gradient(145deg, #0a5ef0 0%, #0047c2 55%, #0a2f9e 100%); color: #fff; box-shadow: 0 40px 90px -45px rgba(0,71,194,.85); }
-    .card.t-indigo { background: radial-gradient(120% 130% at 100% 0%, #e2e5ff 0%, #f3f4ff 45%, #ffffff 100%); box-shadow: 0 0 0 1px rgba(75,79,224,.18), 0 40px 80px -50px rgba(75,79,224,.6); }
+    /* card themes — same softness for every card, only the hue changes */
+    .t-cyan   { --acc: #0a86b8; --acc-2: #16b6e3; --tint: #d4f4ff; --tint-2: #e9fbff; --ring: rgba(22,182,227,.22); --glow: rgba(22,182,227,.55); }
+    .t-blue   { --acc: #0055e6; --acc-2: #3d8bff; --tint: #d9e6ff; --tint-2: #edf3ff; --ring: rgba(0,85,230,.18);  --glow: rgba(0,85,230,.5); }
+    .t-indigo { --acc: #4b4fe0; --acc-2: #7a7ef2; --tint: #e0e2ff; --tint-2: #f1f1ff; --ring: rgba(75,79,224,.2);  --glow: rgba(75,79,224,.5); }
+    .t-teal   { --acc: #0d8f86; --acc-2: #22c1b4; --tint: #d3f4ef; --tint-2: #ebfaf7; --ring: rgba(13,143,134,.2); --glow: rgba(13,143,134,.45); }
+    .t-sky    { --acc: #2a6df4; --acc-2: #5aa2ff; --tint: #e0ebff; --tint-2: #f1f6ff; --ring: rgba(42,109,244,.16); --glow: rgba(42,109,244,.45); }
+    .card.t-cyan, .card.t-blue, .card.t-indigo, .m-feat.t-cyan, .m-feat.t-blue, .m-feat.t-indigo, .m-mcard {
+      background:
+        radial-gradient(90% 110% at 0% 0%, var(--tint) 0%, rgba(255,255,255,0) 62%),
+        radial-gradient(70% 90% at 100% 100%, var(--tint-2) 0%, rgba(255,255,255,0) 60%),
+        #ffffff;
+      color: var(--ink);
+      box-shadow: 0 0 0 1px var(--ring), 0 36px 70px -48px var(--glow);
+    }
     .card .n { display: inline-flex; align-items: center; justify-content: center; min-width: 46px; height: 30px; padding: 0 12px; border-radius: 999px; font-size: 14px; color: #fff; background: linear-gradient(135deg, var(--acc-2), var(--acc)); }
-    .card.t-blue .n { color: #0047c2; background: #fff; }
     .card h3 { letter-spacing: -0.045em; }
     .card .hl, .m-feat .hl { background: linear-gradient(90deg, var(--acc), var(--acc-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .card.t-blue .hl, .m-feat.t-blue .hl { background: linear-gradient(90deg, #a8ecff, #ffffff); -webkit-background-clip: text; background-clip: text; }
     .card .tagline { display: inline-flex; align-items: center; gap: 10px; margin: 18px 0 0; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--acc); }
     .card .tagline::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--acc-2), var(--acc)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc-2) 22%, transparent); }
-    .card.t-blue .tagline { color: #d6f5ff; }
     .card .chip { box-shadow: 0 0 0 1px color-mix(in srgb, var(--acc) 22%, transparent); }
     .card .chip svg { color: var(--acc); }
-    .card.t-blue .chip { background: rgba(255,255,255,.12); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.24); }
-    .card.t-blue .chip svg { color: #bfeeff; }
     .card .cmedia { box-shadow: 0 24px 50px -28px rgba(11,16,48,.55); }
 
     /* phone product cards */
-    .m-feat.t-cyan   { background: linear-gradient(180deg, #e3f8ff 0%, #f5fcff 100%); box-shadow: 0 0 0 1px rgba(22,182,227,.22); }
-    .m-feat.t-blue   { background: linear-gradient(160deg, #0a5ef0 0%, #0047c2 60%, #0a2f9e 100%); color: #fff; box-shadow: 0 24px 50px -30px rgba(0,71,194,.85); }
-    .m-feat.t-indigo { background: linear-gradient(180deg, #eaecff 0%, #f6f6ff 100%); box-shadow: 0 0 0 1px rgba(75,79,224,.2); }
     .m-feat .m-n { color: var(--acc); }
-    .m-feat.t-blue .m-n { color: #bfeeff; }
-    .m-feat.t-blue .m-feat-t p { color: rgba(255,255,255,.85); }
     .m-feat .m-tag { display: inline-flex; align-items: center; gap: 8px; margin: 8px 0 0 !important; font-size: 13.5px !important; font-weight: 600; color: var(--acc) !important; }
     .m-feat .m-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, var(--acc-2), var(--acc)); }
-    .m-feat.t-blue .m-tag { color: #d6f5ff !important; }
 
     /* phone "more features": swipe gallery of image cards */
     .m-more-row { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 16px; padding: 4px 16px 6px; scrollbar-width: none; }
     .m-more-row::-webkit-scrollbar { display: none; }
-    .m-mcard { flex: 0 0 82%; scroll-snap-align: start; border-radius: 18px; overflow: hidden; background: linear-gradient(180deg, var(--tint) 0%, #ffffff 100%); box-shadow: 0 0 0 1px color-mix(in srgb, var(--acc) 18%, transparent); }
-    .m-mcard.t-blue { background: linear-gradient(160deg, #0a5ef0 0%, #0047c2 65%, #0a2f9e 100%); color: #fff; box-shadow: none; }
+    .m-mcard { flex: 0 0 82%; scroll-snap-align: start; border-radius: 18px; overflow: hidden; }
     .m-mimg { display: block; width: 100%; padding: 0; aspect-ratio: 16 / 10; overflow: hidden; background: #e7edf8; cursor: zoom-in; }
     .m-mimg img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
     .m-mtxt { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: start; padding: 14px 14px 16px; }
     .m-mic { width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, var(--acc-2), var(--acc)); }
-    .m-mcard.t-blue .m-mic { background: rgba(255,255,255,.16); color: #bfeeff; }
     .m-mic svg { width: 18px; height: 18px; }
     .m-mtxt b { display: block; font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
     .m-mtxt span { display: block; margin-top: 3px; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
-    .m-mcard.t-blue .m-mtxt span { color: rgba(255,255,255,.82); }
     .m-more .m-dots { margin: 2px 0 6px; }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1108,8 +1102,8 @@
           </article>
         </div>
 
-        <details class="m-more">
-          <summary><span>Lihat fitur lainnya</span><span class="m-count">5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="m-more" aria-labelledby="mm-title">
+          <div class="m-more-h"><h3 id="mm-title">Fitur lainnya</h3><span class="m-count">5</span><span class="m-more-hint">Geser →</span></div>
           <div class="m-more-row">
             <article class="m-mcard t-blue">
               <button class="m-mimg" type="button" data-lightbox="fitur2.jpg" aria-label="Perbesar: Horus AI 24 Jam"><img src="fitur2.jpg" width="1200" height="700" alt="Horus AI 24 jam dengan 5 gaya persona" loading="lazy" decoding="async" /></button>
@@ -1132,7 +1126,7 @@
               <div class="m-mtxt"><span class="m-mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><div><b>Papan Pantau</b><span>Tandai chat yang belum dibalas lebih dari 15–30 menit.</span></div></div>
             </article>
           </div>
-        </details>
+        </div>
 
         <button class="m-film" type="button" data-open-demo>
           <span class="m-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
